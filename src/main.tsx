@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import App from './App'
-import { ErrorPage, AboutUsPage } from './pages';
-import './index.css'
+import App from './App';
+import { HomePage, ErrorPage, AboutUsPage } from './pages';
+import './index.css';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <HomePage />,
     errorElement: <ErrorPage />,
   },
   {
@@ -20,5 +20,6 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

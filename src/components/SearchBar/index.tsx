@@ -6,9 +6,11 @@ export default class SearchBar extends Component<Props, State> {
   private static searchInputProps: SearchInputProps = {
     type: 'text',
     id: 'search-bar',
-    placeholder: 'Search',
     autoComplete: 'off',
     autoFocus: true,
+    role: 'search',
+    placeholder: 'Search',
+    'aria-label': 'Search',
   };
   constructor(props = {}) {
     super(props);
@@ -33,7 +35,10 @@ export default class SearchBar extends Component<Props, State> {
 
   public render() {
     return (
-      <form>
+      <form
+        className="search-form"
+        role="search-form"
+      >
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}

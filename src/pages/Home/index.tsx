@@ -4,6 +4,7 @@ import styles from './index.module.css';
 
 const Home = () => (
   <main className={styles.main}>
+    HomePage
     <SearchBar />
   </main>
 );

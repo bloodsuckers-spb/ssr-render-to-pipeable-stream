@@ -1,12 +1,10 @@
-import { HomePage } from './pages';
-
 import Header from './components/AppHeader';
 import './App.css';
 
 const App = () => (
   <div className="App">
+    Hello Header
     <Header />
-    <HomePage />
   </div>
 );
 

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, ChangeEvent } from 'react';
 import { Props, State, SearchInputProps } from './models';
 
 export default class SearchBar extends Component<Props, State> {
@@ -22,18 +22,22 @@ export default class SearchBar extends Component<Props, State> {
   }
 
   private handleClick() {
-    console.log('handleClick');
+    console.log(this.state);
+  }
+
+  private handleChange({
+    currentTarget: { value },
+  }: ChangeEvent<HTMLInputElement>) {
+    this.setState({ searchValue: value });
   }
 
   public render() {
     return (
-      <form
-        action="/"
-        method="get"
-      >
+      <form>
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}
+          onChange={this.handleChange}
         />
         <button onClick={this.handleClick}>Search</button>
       </form>

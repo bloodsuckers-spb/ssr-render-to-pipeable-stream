@@ -1,9 +1,11 @@
 import styles from './index.module.css';
 
-const AppHeader = () => (
+import { Props } from './models'
+
+const AppHeader = ({ currentPage }: Props) => (
   <header className={styles.header}>
     <div className="container">
-      <div className={styles.inner}>Hello header</div>
+      <div className={styles.inner}>{currentPage}</div>
     </div>
   </header>
 );

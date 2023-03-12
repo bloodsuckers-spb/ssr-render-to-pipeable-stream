@@ -2,9 +2,11 @@ import Nav from '../Nav';
 
 import styles from './index.module.css';
 
-const AppSideBar = () => (
+import { Props } from './models';
+
+const AppSideBar = ({ changeCurrentPage }: Props) => (
   <aside className={styles.sidebar}>
-    <Nav />
+    <Nav changeCurrentPage={changeCurrentPage} />
   </aside>
 );
 

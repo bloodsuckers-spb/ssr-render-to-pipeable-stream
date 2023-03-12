@@ -1,6 +1,6 @@
-import { Props } from './models';
-
 import './index.css';
+
+import { Props } from './models';
 
 const Card = ({ data: { name, description, img, breed } }: Props) => (
   <div

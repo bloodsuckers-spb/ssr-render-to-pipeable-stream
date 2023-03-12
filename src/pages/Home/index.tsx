@@ -5,7 +5,7 @@ import { cardsData } from '../../constants';
 import styles from './index.module.css';
 
 const Home = () => (
-  <div className="content">
+  <div className={styles.content}>
     <SearchBar />
     <ul
       className={styles.cards}

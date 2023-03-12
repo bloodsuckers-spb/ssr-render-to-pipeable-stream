@@ -4,11 +4,13 @@ import { SideBar } from '..';
 
 import styles from './index.module.css';
 
-const AppMain = () => (
+import { Props } from './models';
+
+const AppMain = ({ changeCurrentPage }: Props) => (
   <div className="main">
     <div className={styles.container}>
       <div className={styles.inner}>
-        <SideBar />
+        <SideBar changeCurrentPage={changeCurrentPage} />
         <Outlet />
       </div>
     </div>

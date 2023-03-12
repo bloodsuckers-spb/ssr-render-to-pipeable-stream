@@ -1,3 +1,9 @@
+.container {
+  max-width: 1920px;
+  height: 100%;
+}
+
 .inner {
   display: flex;
+  height: 100%;
 }

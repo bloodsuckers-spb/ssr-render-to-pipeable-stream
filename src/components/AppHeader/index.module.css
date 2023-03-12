@@ -1,8 +1,10 @@
 .header {
   height: 70px;
   background-color: #000;
+  color: #fff;
 }
 
 .inner {
   display: flex;
+  justify-content: center;
 }

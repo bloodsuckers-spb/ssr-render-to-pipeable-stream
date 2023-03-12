@@ -9,7 +9,14 @@ const Nav = () => (
     <ul className={styles.list}>
       {navlinks.map(({ url, text, id }) => (
         <li key={id}>
-          <NavLink to={url}>{text}</NavLink>
+          <NavLink
+            to={url}
+            className={({ isActive, isPending }) =>
+              isPending ? 'pending' : isActive ? 'active' : ''
+            }
+          >
+            {text}
+          </NavLink>
         </li>
       ))}
     </ul>

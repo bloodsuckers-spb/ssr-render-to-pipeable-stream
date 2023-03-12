@@ -1,50 +1,50 @@
 import { Component, ChangeEvent } from 'react';
-import { Props, State, SearchInputProps } from './models';
+
+import { localStorageService } from '../../services/StorageWrapper';
+
+import { Props, State, SearchInputProps, FormProps } from './models';
 
 export default class SearchBar extends Component<Props, State> {
-  private static searchValue = 'searchValue';
-  private static searchInputProps: SearchInputProps = {
+  private static readonly searchValue = 'searchValue';
+  private static readonly formProps: FormProps = {
+    className: 'search-form',
+    role: 'search-form',
+  };
+  private static readonly searchInputProps: SearchInputProps = {
     type: 'text',
-    id: 'search-bar',
+    className: 'search-bar',
     autoComplete: 'off',
     autoFocus: true,
-    role: 'search',
     placeholder: 'Search',
+    role: 'search',
     'aria-label': 'Search',
   };
   constructor(props = {}) {
     super(props);
     this.state = {
-      searchValue: localStorage.getItem(SearchBar.searchValue) ?? '',
+      searchValue: localStorageService.get(SearchBar.searchValue) || '',
     };
   }
 
   public componentWillUnmount() {
-    localStorage.setItem(SearchBar.searchValue, this.state.searchValue);
+    localStorageService.set(SearchBar.searchValue, this.state.searchValue);
   }
 
-  private handleClick() {
-    console.log(this.state);
-  }
-
-  private handleChange({
+  private handleChange = ({
     currentTarget: { value },
-  }: ChangeEvent<HTMLInputElement>) {
+  }: ChangeEvent<HTMLInputElement>): void => {
     this.setState({ searchValue: value });
-  }
+  };
 
   public render() {
     return (
-      <form
-        className="search-form"
-        role="search-form"
-      >
+      <form {...SearchBar.formProps}>
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleClick}>Search</button>
+        <button>Search</button>
       </form>
     );
   }

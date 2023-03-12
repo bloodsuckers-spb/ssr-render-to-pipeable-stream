@@ -8,10 +8,15 @@ export type State = {
 
 export type SearchInputProps = {
   type: 'text';
-  id: string;
+  className: string;
   autoComplete: 'off' | 'on';
   autoFocus: boolean;
   role: string;
   placeholder: string;
   'aria-label': string;
+};
+
+export type FormProps = {
+  className: string;
+  role: string;
 };

@@ -1,9 +1,16 @@
 import { NavLink } from 'react-router-dom';
 
+import { navlinks } from '../../constants';
+
 const Nav = () => (
   <nav>
-    <NavLink to="/">Home</NavLink>
-    <NavLink to="about-us">About Us</NavLink>
+    <ul>
+      {navlinks.map(({ url, text, id }) => (
+        <li key={id}>
+          <NavLink to={url}>{text}</NavLink>
+        </li>
+      ))}
+    </ul>
   </nav>
 );
 

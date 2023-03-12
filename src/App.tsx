@@ -1,9 +1,7 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import RootLayout from './components/RootLayout';
+
 import { Home, AboutUs, Error } from './pages';
 
 import './App.css';

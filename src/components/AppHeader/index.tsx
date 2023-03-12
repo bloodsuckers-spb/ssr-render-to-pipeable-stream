@@ -3,7 +3,11 @@ import styles from './index.module.css';
 
 const AppHeader = () => (
   <header className={styles.header}>
-      <Nav />
+    <div className="container">
+      <div className={styles.inner}>
+        <Nav />
+      </div>
+    </div>
   </header>
 );
 

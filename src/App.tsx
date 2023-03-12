@@ -1,32 +1,12 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-
-import RootLayout from './components/RootLayout';
-
-import { Home, AboutUs, Error } from './pages';
+import { AppHeader, AppMain, AppFooter } from './components';
 
 import './App.css';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <RootLayout />,
-    errorElement: <Error />,
-    children: [
-      {
-        path: '/',
-        element: <Home />,
-      },
-      {
-        path: 'about-us',
-        element: <AboutUs />,
-      },
-    ],
-  },
-]);
-
 const App = () => (
-  <div className="App">
-    <RouterProvider router={router} />
+  <div className="app">
+    <AppHeader />
+    <AppMain />
+    <AppFooter />
   </div>
 );
 

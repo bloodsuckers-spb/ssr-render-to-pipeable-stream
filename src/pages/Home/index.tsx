@@ -1,12 +1,9 @@
 import { SearchBar } from '../../components';
 
-import styles from './index.module.css';
-
 const Home = () => (
-  <main className={styles.main}>
-    HomePage
+  <div className="content">
     <SearchBar />
-  </main>
+  </div>
 );
 
 export default Home;

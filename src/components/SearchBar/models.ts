@@ -15,8 +15,3 @@ export type SearchInputProps = {
   placeholder: string;
   'aria-label': string;
 };
-
-export type FormProps = {
-  className: string;
-  role: string;
-};

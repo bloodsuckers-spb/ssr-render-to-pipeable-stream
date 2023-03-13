@@ -1,11 +1,14 @@
 .content {
+  padding-top: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
 }
 
 .cards {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 20px;
 }

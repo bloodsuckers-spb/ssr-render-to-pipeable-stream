@@ -2,14 +2,12 @@ import { Component, ChangeEvent } from 'react';
 
 import { localStorageService } from '../../services/StorageWrapper';
 
-import { Props, State, SearchInputProps, FormProps } from './models';
+import { Props, State, SearchInputProps } from './models';
+
+import styles from './index.module.css';
 
 export default class SearchBar extends Component<Props, State> {
   private static readonly searchValue = 'searchValue';
-  private static readonly formProps: FormProps = {
-    className: 'search-form',
-    role: 'search-form',
-  };
   private static readonly searchInputProps: SearchInputProps = {
     type: 'text',
     className: 'search-bar',
@@ -38,13 +36,13 @@ export default class SearchBar extends Component<Props, State> {
 
   public render() {
     return (
-      <form {...SearchBar.formProps}>
+      <form className={styles.form} role = 'search-form'>
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}
           onChange={this.handleChange}
         />
-        <button>Search</button>
+        <button className={styles.btn}>Search</button>
       </form>
     );
   }

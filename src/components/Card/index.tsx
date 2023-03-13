@@ -1,18 +1,18 @@
-import './index.css';
-
 import { Props } from './models';
 
-const Card = ({ data: { name, description, img, breed } }: Props) => (
+import styles from './index.module.css';
+
+const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
   <div
-    className="card"
+    className={styles.card}
     role="card"
   >
     <img
-      className="card-img"
-      src={''}
+      className={styles.image}
+      src={imgUrl}
     />
     <h4>{name}</h4>
-    <p className="breed">{breed}</p>
+    <p className={styles.paragraph}>{breed}</p>
     <p>{description}</p>
   </div>
 );

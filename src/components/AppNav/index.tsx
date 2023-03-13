@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 import { Props } from './models';
 
-const Nav = ({ changeCurrentPage }: Props) => {
+const AppNav = ({ changeCurrentPage }: Props) => {
   return (
     <nav>
       <ul className={styles.list}>
@@ -28,4 +28,4 @@ const Nav = ({ changeCurrentPage }: Props) => {
   );
 };
 
-export default Nav;
+export default AppNav;

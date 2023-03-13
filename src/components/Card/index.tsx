@@ -9,7 +9,7 @@ const Card = ({ data: { name, description, img, breed } }: Props) => (
   >
     <img
       className="card-img"
-      src={img}
+      src={''}
     />
     <h4>{name}</h4>
     <p className="breed">{breed}</p>

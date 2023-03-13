@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import { localStorageService } from '../../services/StorageWrapper';
 
-import { AppHeader, AppMain, AppFooter } from '..';
+import { AppHeader, AppMain, AppFooter, AppNav, SideBar } from '..';
 
 import { Pages } from '../../constants';
 
@@ -28,7 +28,13 @@ export default class App extends Component<Props, State> {
     return (
       <div className="app">
         <AppHeader currentPage={this.state.currentPage} />
-        <AppMain changeCurrentPage={this.changeCurrentPage} />
+        <AppMain
+          SideBar={
+            <SideBar
+              AppNav={<AppNav changeCurrentPage={this.changeCurrentPage} />}
+            />
+          }
+        />
         <AppFooter />
       </div>
     );

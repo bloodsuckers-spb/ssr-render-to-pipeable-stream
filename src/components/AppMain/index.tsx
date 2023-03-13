@@ -1,16 +1,14 @@
 import { Outlet } from 'react-router-dom';
 
-import { SideBar } from '..';
-
 import styles from './index.module.css';
 
 import { Props } from './models';
 
-const AppMain = ({ changeCurrentPage }: Props) => (
+const AppMain = ({ SideBar }: Props) => (
   <div className="main">
     <div className={styles.container}>
       <div className={styles.inner}>
-        <SideBar changeCurrentPage={changeCurrentPage} />
+        {SideBar}
         <Outlet />
       </div>
     </div>

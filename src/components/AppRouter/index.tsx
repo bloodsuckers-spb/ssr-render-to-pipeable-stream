@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Home, AboutUs, Error } from '../../pages';
+import { Home, AboutUs, NotFound } from '../../pages';
 
 import App from '../App';
 
@@ -9,7 +9,6 @@ const AppRouter = () => {
     {
       path: '/',
       element: <App />,
-      errorElement: <Error />,
       children: [
         {
           path: '/',
@@ -18,6 +17,10 @@ const AppRouter = () => {
         {
           path: 'about-us',
           element: <AboutUs />,
+        },
+        {
+          path: '*',
+          element: <NotFound />,
         },
       ],
     },

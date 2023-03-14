@@ -1,42 +1,19 @@
-import { Component } from 'react';
-
-import { localStorageService } from '../../services/StorageWrapper';
-
-import { AppHeader, AppMain, AppFooter, AppNav, SideBar } from '..';
-
-import { Pages } from '../../constants';
-
-import { Props, State, ChangeCurrentPage } from './models';
+import { AppHeader, AppMain, AppFooter, AppHeading } from '..';
 
 import './index.css';
 
-export default class App extends Component<Props, State> {
-  constructor(props = {}) {
-    super(props);
-    this.state = {
-      currentPage: localStorageService.get('lastPage') || Pages.Home,
-    };
-  }
+import { Props } from './models';
 
-  private changeCurrentPage: ChangeCurrentPage = (currentPage) => {
-    this.setState({
-      currentPage: currentPage,
-    });
-  };
+const App = ({ title, content }: Props) => {
+  return (
+    <div className="app">
+      <AppHeader
+        Heading={<AppHeading title={title} />}
+      />
+      <AppMain content={content} />
+      <AppFooter />
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div className="app">
-        <AppHeader currentPage={this.state.currentPage} />
-        <AppMain
-          SideBar={
-            <SideBar
-              AppNav={<AppNav changeCurrentPage={this.changeCurrentPage} />}
-            />
-          }
-        />
-        <AppFooter />
-      </div>
-    );
-  }
-}
+export default App;

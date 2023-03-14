@@ -5,6 +5,6 @@
 }
 
 .inner {
-  text-align: center;
-  line-height: 70px;
+  display: flex;
+  justify-content: space-between;
 }

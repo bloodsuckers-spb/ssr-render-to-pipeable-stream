@@ -36,7 +36,10 @@ export default class SearchBar extends Component<Props, State> {
 
   public render() {
     return (
-      <form className={styles.form} role = 'search-form'>
+      <form
+        className={styles.form}
+        role="search-form"
+      >
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}

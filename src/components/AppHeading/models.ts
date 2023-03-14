@@ -1,3 +1,3 @@
 export type Props = {
-  AppNav: JSX.Element;
+  title: string;
 };

@@ -4,9 +4,7 @@ import { navlinks } from '../../constants';
 
 import styles from './index.module.css';
 
-import { Props } from './models';
-
-const AppNav = ({ changeCurrentPage }: Props) => {
+const AppNav = () => {
   return (
     <nav>
       <ul className={styles.list}>
@@ -17,7 +15,6 @@ const AppNav = ({ changeCurrentPage }: Props) => {
               className={({ isActive, isPending }) =>
                 isPending ? 'pending' : isActive ? 'active' : ''
               }
-              onClick={() => changeCurrentPage(text)}
             >
               {text}
             </NavLink>

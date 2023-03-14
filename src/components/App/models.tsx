@@ -1,4 +1,6 @@
-export type Props = {
-  title: string;
+import { Title } from "../../models";
+
+export type AppProps = {
+  title: Title;
   content: JSX.Element;
 };

@@ -1,3 +1,3 @@
-export type Props = {
-  content: JSX.Element;
-};
+import { AppProps } from '../App/models';
+
+export type Props = Pick<AppProps, 'content'>;

@@ -2,14 +2,12 @@ import { AppHeader, AppMain, AppFooter, AppHeading } from '..';
 
 import './index.css';
 
-import { Props } from './models';
+import { AppProps } from './models';
 
-const App = ({ title, content }: Props) => {
+const App = ({ title, content }: AppProps) => {
   return (
     <div className="app">
-      <AppHeader
-        Heading={<AppHeading title={title} />}
-      />
+      <AppHeader Heading={<AppHeading title={title} />} />
       <AppMain content={content} />
       <AppFooter />
     </div>

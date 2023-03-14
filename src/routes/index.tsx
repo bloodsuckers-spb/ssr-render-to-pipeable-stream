@@ -1,5 +1,11 @@
 import { Home, AboutUs, NotFound } from '../pages';
 
+export const titles = {
+  Home: 'Home',
+  AboutUs: 'AboutUs',
+  NotFound: 'NotFound',
+} as const;
+
 export const routes = [
   {
     id: 0,

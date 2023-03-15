@@ -5,10 +5,3 @@
   align-items: center;
   gap: 20px;
 }
-
-.cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}

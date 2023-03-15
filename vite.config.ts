@@ -1,3 +1,6 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
+
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -11,6 +14,16 @@ export default defineConfig({
       services: '/src/services',
       models: '/src/models',
       assets: '/src/assets',
+    },
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/setup.ts'],
+    coverage: {
+      enabled: true,
+      provider: 'c8',
+      all: true,
     },
   },
 });

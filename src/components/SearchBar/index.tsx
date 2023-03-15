@@ -1,4 +1,4 @@
-import { Component, ChangeEvent } from 'react';
+import { Component, ChangeEvent, FormEvent } from 'react';
 
 import { localStorageService } from '../../services/StorageWrapper';
 
@@ -30,8 +30,13 @@ export default class SearchBar extends Component<Props, State> {
 
   private handleChange = ({
     currentTarget: { value },
-  }: ChangeEvent<HTMLInputElement>): void => {
+  }: ChangeEvent<HTMLInputElement>): false => {
     this.setState({ searchValue: value });
+    return false;
+  };
+
+  private handleSubmit = (event: FormEvent): void => {
+    event.preventDefault();
   };
 
   public render() {
@@ -39,13 +44,19 @@ export default class SearchBar extends Component<Props, State> {
       <form
         className={styles.form}
         role="search-form"
+        onSubmit={this.handleSubmit}
       >
         <input
           {...SearchBar.searchInputProps}
           defaultValue={this.state.searchValue}
           onChange={this.handleChange}
         />
-        <button className={styles.btn}>Search</button>
+        <button
+          className={styles.btn}
+          role="search-button"
+        >
+          Search
+        </button>
       </form>
     );
   }

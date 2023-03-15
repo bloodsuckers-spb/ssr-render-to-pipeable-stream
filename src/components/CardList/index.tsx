@@ -1,9 +1,9 @@
 import Card from '../Card';
 
 import styles from './index.module.css';
-import { cardsData } from '../../constants';
+import { Props } from './models';
 
-const CardList = () => {
+const CardList = ({ cardsData }: Props) => {
   return (
     <ul
       className={styles.cards}

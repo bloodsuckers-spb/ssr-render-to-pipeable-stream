@@ -30,9 +30,8 @@ export default class SearchBar extends Component<Props, State> {
 
   private handleChange = ({
     currentTarget: { value },
-  }: ChangeEvent<HTMLInputElement>): false => {
+  }: ChangeEvent<HTMLInputElement>) => {
     this.setState({ searchValue: value });
-    return false;
   };
 
   private handleSubmit = (event: FormEvent): void => {

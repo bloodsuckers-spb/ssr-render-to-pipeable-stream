@@ -1,7 +1,7 @@
-import { Props } from "./models";
+import { Props } from './models';
 
 const AppHeading = ({ title }: Props) => {
-  return <div>{title}</div>;
+  return <div role="app-heading">{title}</div>;
 };
 
 export default AppHeading;

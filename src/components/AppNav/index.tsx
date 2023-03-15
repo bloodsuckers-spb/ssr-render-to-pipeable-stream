@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 const AppNav = () => {
   return (
-    <nav>
+    <nav role='navigation'>
       <ul className={styles.list}>
         {navlinks.map(({ url, text, id }) => (
           <li key={id}>

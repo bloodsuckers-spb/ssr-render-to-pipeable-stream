@@ -16,10 +16,9 @@ const AppRouter = (routes: AppRoutes) => {
         <Route
           index
           element={
-            <App
-              title="Home"
-              content={<Home />}
-            />
+            <App title="Home">
+              <Home />
+            </App>
           }
         />
         {routes.map(({ id, path, title, content }) => {
@@ -27,12 +26,7 @@ const AppRouter = (routes: AppRoutes) => {
             <Route
               key={id}
               path={path}
-              element={
-                <App
-                  title={title}
-                  content={content}
-                />
-              }
+              element={<App title={title}>{content}</App>}
             />
           );
         })}

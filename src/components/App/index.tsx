@@ -4,11 +4,11 @@ import './index.css';
 
 import { AppProps } from './models';
 
-const App = ({ title, content }: AppProps) => {
+const App = ({ title, children }: AppProps) => {
   return (
     <div className="app">
-      <AppHeader Heading={<AppHeading title={title} />} />
-      <AppMain content={content} />
+      <AppHeader><AppHeading title={title} /></AppHeader>
+      <AppMain>{children}</AppMain>
       <AppFooter />
     </div>
   );

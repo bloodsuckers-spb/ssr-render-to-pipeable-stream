@@ -4,12 +4,12 @@ import styles from './index.module.css';
 
 import { Props } from './models';
 
-const AppHeader = ({ Heading }: Props) => {
+const AppHeader = ({ children }: Props) => {
   return (
     <header className={styles.header}>
       <div className="container">
         <div className={styles.inner}>
-          {Heading}
+          {children}
           <AppNav />
         </div>
       </div>

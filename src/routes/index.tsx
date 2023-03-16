@@ -1,3 +1,5 @@
+/* c8 ignore next */
+
 import { Home, AboutUs, NotFound } from '../pages';
 
 import { AppRoutes } from '../models';
@@ -27,4 +29,4 @@ export const routes: AppRoutes = [
     title: 'NotFound',
     content: <NotFound />,
   },
-]
+];

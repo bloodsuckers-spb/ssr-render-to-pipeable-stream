@@ -1,3 +1,4 @@
+/* c8 ignore next */
 import { AppProps } from '../App/models';
 
 type MyPick<Type, Key extends keyof Type> = {

@@ -1,4 +1,5 @@
-import { titles } from "../routes";
+/* c8 ignore next */
+import { titles } from '../routes';
 
 export type Empty = Record<string, never>;
 

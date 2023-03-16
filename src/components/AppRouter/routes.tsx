@@ -1,6 +1,6 @@
 import { Home, AboutUs, NotFound } from '../../pages';
 
-import { AppRoutes } from '../../models';
+import { AppRoutes } from './models';
 
 export const titles = {
   Home: 'Home',

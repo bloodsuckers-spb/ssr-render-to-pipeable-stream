@@ -1,4 +1,3 @@
-/* c8 ignore next */
 import { Empty } from '../../models';
 
 export type Props = Empty;

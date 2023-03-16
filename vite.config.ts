@@ -25,7 +25,7 @@ export default defineConfig({
       provider: 'c8',
       all: true,
       include: ['src/**/*.tsx'],
-      exclude: ['**/*.test.tsx'],
+      exclude: ['**/*.test.tsx', '**/routes.tsx'],
     },
   },
 });

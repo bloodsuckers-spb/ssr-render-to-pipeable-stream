@@ -1,8 +1,6 @@
-/* c8 ignore next */
+import { Home, AboutUs, NotFound } from '../../pages';
 
-import { Home, AboutUs, NotFound } from '../pages';
-
-import { AppRoutes } from '../models';
+import { AppRoutes } from '../../models';
 
 export const titles = {
   Home: 'Home',

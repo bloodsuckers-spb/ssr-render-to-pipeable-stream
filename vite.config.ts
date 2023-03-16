@@ -25,7 +25,7 @@ export default defineConfig({
       provider: 'c8',
       all: true,
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['**/models.{ts, tsx}'],
+      exclude: ['**/models.{ts, tsx}', '**/models'],
     },
   },
 });

@@ -7,7 +7,7 @@ import {
 import App from '../App';
 import { Home } from '../../pages';
 
-import { AppRoutes } from '../../models';
+import { AppRoutes } from './models';
 
 const AppRouter = (routes: AppRoutes) => {
   return createBrowserRouter(

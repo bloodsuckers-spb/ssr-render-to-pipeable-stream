@@ -1,4 +1,5 @@
-/* c8 ignore next */
+import { ReactNode } from "react";
+
 export type Props = {
-  Heading: JSX.Element;
+  Heading: ReactNode;
 };

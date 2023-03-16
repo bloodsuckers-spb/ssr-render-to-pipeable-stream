@@ -1,6 +1,4 @@
-import { titles } from './routes';
-
-export type Title = keyof typeof titles;
+import { Title } from '../../models';
 
 export type AppRoutes = Array<{
   id: number;

@@ -24,8 +24,8 @@ export default defineConfig({
       enabled: true,
       provider: 'c8',
       all: true,
-      include: ['src/**/*.{ts,tsx}'],
-      exclude: ['**/models.{ts, tsx}', '**/models'],
+      include: ['src/**/*.tsx'],
+      exclude: ['**/*.test.tsx'],
     },
   },
 });

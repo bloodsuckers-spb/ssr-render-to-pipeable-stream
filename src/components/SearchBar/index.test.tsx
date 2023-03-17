@@ -9,7 +9,7 @@ const FORM_ROLE = 'search-form';
 const BTN_ROLE = 'search-button';
 
 describe('tests for SearchBar component', () => {
-  test('is SearchBar component renders clearly', () => {
+  it('is SearchBar component renders clearly', () => {
     render(<SearchBar />);
     const searchBar = screen.getByPlaceholderText(PLACEHOLDER_TEXT);
     if (!(searchBar instanceof HTMLInputElement)) {

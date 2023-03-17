@@ -7,7 +7,7 @@ import routesConfig from './routesConfig';
 const APP_ROLE = 'app';
 const HEADING_TEXT = 'AboutUs';
 
-describe('Tests for AppRouter', async () => {
+describe('Tests for AppRouter', () => {
   it('is AppRouter provider works clearly', async () => {
     render(<RouterProvider router={AppRouter(routesConfig)} />);
     expect(screen.getByRole(APP_ROLE)).toBeInTheDocument();

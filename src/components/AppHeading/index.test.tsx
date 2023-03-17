@@ -6,7 +6,7 @@ const HEADING_ROLE = 'app-heading';
 const titles = ['Home', 'AboutUs', 'NotFound'] as const;
 
 describe('test for AppFooter component', () => {
-  test('is AppFooter component renders clearly', () => {
+  it('is AppFooter component renders clearly', () => {
     const title = titles[Math.floor(Math.random() * titles.length)];
     render(<AppHeading title={title} />);
     expect(screen.getByRole(HEADING_ROLE)).toBeInTheDocument();

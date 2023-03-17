@@ -11,7 +11,7 @@ const DOG_NAME = 'Jennifer';
 const DOG_BREED = 'Labrador';
 
 describe('test for Card component', () => {
-  test('is Card component renders clearly', () => {
+  it('is Card component renders clearly', () => {
     render(<Card data={data} />);
     expect(screen.getByRole(CARD_ROLE)).toBeInTheDocument();
     expect(screen.getByText(DOG_NAME)).toBeInTheDocument();

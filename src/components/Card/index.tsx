@@ -3,7 +3,7 @@ import { Props } from './models';
 import styles from './index.module.css';
 
 const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
-  <div
+  <li
     className={styles.card}
     role="card"
   >
@@ -14,7 +14,7 @@ const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
     <h4>{name}</h4>
     <p className={styles.paragraph}>{breed}</p>
     <p>{description}</p>
-  </div>
+  </li>
 );
 
 export default Card;

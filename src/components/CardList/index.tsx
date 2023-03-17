@@ -10,7 +10,7 @@ const CardList = ({ cardsData }: Props) => {
       role="cards-list"
     >
       {cardsData.map((data) => (
-        <li key={data.id}>{<Card data={data} />}</li>
+        <Card key={data.id} data={data} />
       ))}
     </ul>
   );

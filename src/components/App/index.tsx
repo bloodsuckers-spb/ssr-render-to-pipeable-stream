@@ -6,7 +6,10 @@ import { AppProps } from './models';
 
 const App = ({ title, children }: AppProps) => {
   return (
-    <div className="app">
+    <div
+      className="app"
+      role="app"
+    >
       <AppHeader>
         <AppHeading title={title} />
       </AppHeader>

@@ -1,6 +1,7 @@
 export const Pages = {
   Home: 'Home',
   AboutUs: 'About Us',
+  Forms: 'Forms'
 } as const;
 
 export const navlinks = [
@@ -13,6 +14,11 @@ export const navlinks = [
     url: 'about-us',
     text: Pages.AboutUs,
     id: 1,
+  },
+  {
+    url: '/forms',
+    text: Pages.Forms,
+    id: 2,
   },
 ] as const;
 

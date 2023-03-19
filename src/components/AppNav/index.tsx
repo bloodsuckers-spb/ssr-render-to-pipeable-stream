@@ -7,7 +7,10 @@ import styles from './index.module.css';
 const AppNav = () => {
   const getPathname = (url: string) => {
     if (url === '/') return false;
-    return window.location.pathname.match(url);
+    if (window.location.pathname === '/about-us') {
+      return true
+    }
+    return false
   };
   return (
     <nav role="navigation">

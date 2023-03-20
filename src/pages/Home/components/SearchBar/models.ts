@@ -1,4 +1,4 @@
-import { Empty } from '../../models';
+import { Empty } from '../../../../models';
 
 export type Props = Empty;
 

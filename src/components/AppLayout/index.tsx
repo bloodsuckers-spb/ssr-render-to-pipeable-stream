@@ -1,4 +1,4 @@
-import { AppNav, AppHeading, Bounding } from '..';
+import { AppNav, Heading, Bounding } from '..';
 
 import styles from './index.module.scss';
 
@@ -11,7 +11,7 @@ const AppLayout = ({ children }: AppProps) => (
   >
     <header className={styles.header}>
       <Bounding>
-        <AppHeading />
+        <Heading />
         <AppNav />
       </Bounding>
     </header>

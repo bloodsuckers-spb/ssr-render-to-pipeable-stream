@@ -1,10 +1,6 @@
 import { Component, ReactNode } from 'react';
 
-type Props = Record<string, never>;
-
-type State = {
-  isDisabled: boolean;
-};
+import { State, Props } from './models';
 
 import styles from './index.module.css';
 
@@ -56,8 +52,11 @@ export default class Form extends Component<Props, State> {
         className={styles.form}
         onSubmit={this.handleSubmit}
       >
-        {formItems.map((data) => (
-          <FormInput {...data} />
+        {formItems.map((data, i) => (
+          <FormInput
+            key={i}
+            {...data}
+          />
         ))}
         <button
           className="submit"

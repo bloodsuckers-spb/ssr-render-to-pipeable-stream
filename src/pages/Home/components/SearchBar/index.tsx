@@ -1,6 +1,6 @@
 import { Component, ChangeEvent, FormEvent } from 'react';
 
-import { localStorageService } from '../../services/StorageWrapper';
+import { localStorageService } from '../../../../services/StorageWrapper';
 
 import { Props, State, SearchInputProps } from './models';
 

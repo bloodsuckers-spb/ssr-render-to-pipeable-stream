@@ -1,4 +1,4 @@
-import { SearchBar, CardList } from '../../components';
+import { CardList, SearchBar } from './components';
 
 import styles from './index.module.scss';
 

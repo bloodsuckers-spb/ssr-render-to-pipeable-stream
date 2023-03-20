@@ -1,15 +1,15 @@
 import { render, screen } from '@testing-library/react';
 
-import AppHeading from '.';
+import Heading from '.';
 
-const HEADING_ROLE = 'app-heading';
+const TEST_ID = 'heading';
 const titles = ['Home', 'AboutUs', 'NotFound'] as const;
 
 describe('test for AppFooter component', () => {
   it('is AppFooter component renders clearly', () => {
     const title = titles[Math.floor(Math.random() * titles.length)];
-    render(<AppHeading />);
-    expect(screen.getByRole(HEADING_ROLE)).toBeInTheDocument();
+    render(<Heading />);
+    expect(screen.getByTestId(TEST_ID)).toBeInTheDocument();
     expect(screen.getByText(title)).toBeInTheDocument();
   });
 });

@@ -6,8 +6,8 @@ const ERROR_MESSAGE = 'Error, This is not Input Element';
 const PLACEHOLDER_TEXT = 'Search';
 const storageKey = 'searchValue';
 const INPUT_VALUE = '23';
-const FORM_ROLE = 'search-form';
-const BTN_ROLE = 'search-button';
+const FORM_TEST_ID = 'search-form';
+const BTN_TEST_ID = 'search-button';
 
 describe('tests for SearchBar component', () => {
   const renderSearchBar = () => {
@@ -21,8 +21,8 @@ describe('tests for SearchBar component', () => {
 
   it('is SearchBar component renders clearly', () => {
     expect(renderSearchBar()).toBeInTheDocument();
-    expect(screen.getByRole(FORM_ROLE)).toBeInTheDocument();
-    expect(screen.getByRole(BTN_ROLE)).toBeInTheDocument();
+    expect(screen.getByTestId(FORM_TEST_ID)).toBeInTheDocument();
+    expect(screen.getByTestId(BTN_TEST_ID)).toBeInTheDocument();
   });
 
   it('is SearchBar have focus', () => {

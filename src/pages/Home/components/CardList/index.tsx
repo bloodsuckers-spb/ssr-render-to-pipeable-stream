@@ -7,7 +7,7 @@ const CardList = ({ cardsData }: Props) => {
   return (
     <ul
       className={styles.cards}
-      role="cards-list"
+      data-testid="cards-list"
     >
       {cardsData.map((data) => (
         <Card

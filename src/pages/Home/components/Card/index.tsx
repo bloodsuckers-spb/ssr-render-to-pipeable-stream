@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
   <li
     className={styles.card}
-    role="card"
+    data-testid="card"
   >
     <img
       className={styles.image}

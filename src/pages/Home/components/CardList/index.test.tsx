@@ -4,12 +4,12 @@ import CardList from '.';
 
 import { cardsData } from '../../constants';
 
-const LIST_ROLE_TEXT = 'cards-list';
+const TEST_ID = 'cards-list';
 
 describe('test for CardList component', () => {
   it('is CardList component renders clearly', () => {
     render(<CardList cardsData={cardsData} />);
-    const cardList = screen.getByRole(LIST_ROLE_TEXT);
+    const cardList = screen.getByTestId(TEST_ID);
     expect(cardList).toBeInTheDocument();
     expect(cardList.children.length).toBe(cardsData.length);
   });

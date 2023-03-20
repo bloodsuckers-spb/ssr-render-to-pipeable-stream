@@ -42,7 +42,7 @@ export default class SearchBar extends Component<Props, State> {
     return (
       <form
         className={styles.form}
-        role="search-form"
+        data-testid="search-form"
         onSubmit={this.handleSubmit}
       >
         <input
@@ -52,7 +52,7 @@ export default class SearchBar extends Component<Props, State> {
         />
         <button
           className={styles.btn}
-          role="search-button"
+          data-testid="search-button"
         >
           Search
         </button>

@@ -2,13 +2,10 @@ import { AppNav, Heading, Bounding } from '..';
 
 import styles from './index.module.scss';
 
-import { AppProps } from './models';
+import { Props } from './models';
 
-const AppLayout = ({ children }: AppProps) => (
-  <div
-    className={styles.app}
-    role="app"
-  >
+const AppLayout = ({ children }: Props) => (
+  <div className={styles.app}>
     <header className={styles.header}>
       <Bounding>
         <Heading />

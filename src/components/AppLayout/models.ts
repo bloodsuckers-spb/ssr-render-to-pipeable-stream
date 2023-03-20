@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export type AppProps = {
+export type Props = {
   children: ReactNode;
 };

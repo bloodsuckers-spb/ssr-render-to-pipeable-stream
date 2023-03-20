@@ -1,0 +1,23 @@
+$bar-height: 70px;
+$bar-bg-color: #000;
+$bar-color: #fff;
+
+.app {
+  display: grid;
+  grid-template-rows: $bar-height 1fr;
+  min-height: 100vh;
+}
+
+.header {
+  height: $bar-height;
+  background-color: $bar-bg-color;
+  color: $bar-color;
+}
+
+.footer {
+  height: $bar-height;
+  text-align: center;
+  line-height: $bar-height;
+  background-color: $bar-bg-color;
+  color: $bar-color;
+}

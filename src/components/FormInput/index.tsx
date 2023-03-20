@@ -1,11 +1,13 @@
 import { FormInput as Props } from '../Form/constants';
 
+import styles from './index.module.scss';
+
 const FormInput = ({ title, id, inputType, errorMessage }: Props) => {
   return (
     <div>
-      <h4 className="title">{title}</h4>
+      <h4>{title}</h4>
       <label
-        className="sr-only"
+        className={styles.sr}
         htmlFor={id}
       >
         Surname Name

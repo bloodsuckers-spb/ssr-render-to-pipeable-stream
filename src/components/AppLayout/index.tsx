@@ -5,7 +5,10 @@ import styles from './index.module.scss';
 import { Props } from './models';
 
 const AppLayout = ({ children }: Props) => (
-  <div className={styles.app}>
+  <div
+    className={styles.app}
+    data-testid="app"
+  >
     <header className={styles.header}>
       <Bounding>
         <Heading />

@@ -5,7 +5,7 @@ import { navlinks } from './constants';
 import styles from './index.module.scss';
 
 const AppNav = () => (
-  <nav role="navigation">
+  <nav data-testid="nav">
     <ul className={styles.list}>
       {navlinks.map(({ url, text, id }) => (
         <li key={id}>

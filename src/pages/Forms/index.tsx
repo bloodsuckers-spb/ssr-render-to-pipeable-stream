@@ -1,6 +1,6 @@
 import Form from '../../components/Form';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 const Forms = () => {
   return (

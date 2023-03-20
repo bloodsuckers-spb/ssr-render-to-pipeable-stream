@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 
 import { navlinks } from './constants';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 const AppNav = () => (
   <nav role="navigation">

@@ -1,6 +1,6 @@
 import { SearchBar, CardList } from '../../components';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 import { cardsData } from './constants';
 

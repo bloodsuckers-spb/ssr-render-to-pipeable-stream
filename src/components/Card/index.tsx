@@ -1,6 +1,6 @@
 import { Props } from './models';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
   <li

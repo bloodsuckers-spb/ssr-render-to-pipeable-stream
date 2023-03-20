@@ -1,6 +1,6 @@
 import Card from '../Card';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 import { Props } from './models';
 
 const CardList = ({ cardsData }: Props) => {

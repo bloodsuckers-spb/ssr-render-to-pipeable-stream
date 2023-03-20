@@ -77,8 +77,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-.container {
-  max-width: 1920px;
-  padding: 0 20px;
-}

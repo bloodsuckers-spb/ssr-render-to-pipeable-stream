@@ -4,7 +4,7 @@ import { localStorageService } from '../../services/StorageWrapper';
 
 import { Props, State, SearchInputProps } from './models';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 export default class SearchBar extends Component<Props, State> {
   private static readonly searchValue = 'searchValue';

@@ -18,12 +18,7 @@ const AppLayout = ({ children }: AppProps) => (
     <main>
       <Bounding>{children}</Bounding>
     </main>
-    <footer
-      role="footer"
-      className={styles.footer}
-    >
-      RSS 2023
-    </footer>
+    <footer className={styles.footer}>RSS 2023</footer>
   </div>
 );
 

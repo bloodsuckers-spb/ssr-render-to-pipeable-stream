@@ -1,11 +1,12 @@
 import { Component, ReactNode } from 'react';
 
-import { State, Props } from './models';
+import { FormInput, Select } from '..';
 
 import styles from './index.module.css';
 
-import { formItems } from './constants';
-import FormInput from '../FormInput';
+import { countries, InputsData } from './constants';
+
+import { State, Props } from './models';
 
 export default class Form extends Component<Props, State> {
   constructor(props: Props) {
@@ -15,34 +16,34 @@ export default class Form extends Component<Props, State> {
     };
   }
 
-  handleChange() {
+  private handleChange() {
     return '';
   }
 
-  handleSubmit() {
+  private handleSubmit() {
     return '';
   }
 
-  isTextInputValid = (value: string) => {
+  private isTextInputValid = (value: string) => {
     return /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
   };
 
-  isSelectValid = (value: string) => {
+  private isSelectValid = (value: string) => {
     return !!value;
   };
 
-  isDateValid = (value: string) => {
+  private isDateValid = (value: string) => {
     return (
       /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(value) &&
       Date.now() - Date.parse(value) > 0
     );
   };
 
-  isFileValid = (value: string) => {
+  private isFileValid = (value: string) => {
     return !!value;
   };
 
-  isConfirm = (value: string) => {
+  private isConfirm = (value: string) => {
     return !!value;
   };
 
@@ -52,12 +53,13 @@ export default class Form extends Component<Props, State> {
         className={styles.form}
         onSubmit={this.handleSubmit}
       >
-        {formItems.map((data, i) => (
+        {InputsData.map((data, i) => (
           <FormInput
             key={i}
             {...data}
           />
         ))}
+        <Select options={countries} />
         <button
           className="submit"
           type="submit"

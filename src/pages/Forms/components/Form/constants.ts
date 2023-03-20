@@ -5,7 +5,7 @@ export interface FormInput {
   errorMessage: string;
 }
 
-export const formItems: Array<FormInput> = [
+export const InputsData: Array<FormInput> = [
   {
     id: 'firstName',
     title: 'First Name',
@@ -31,3 +31,5 @@ export const formItems: Array<FormInput> = [
     errorMessage: 'errorMessage',
   },
 ];
+
+export const countries = ['USA', 'Italy', 'Germany'];

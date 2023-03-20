@@ -6,12 +6,12 @@ import { routes } from './routes';
 
 const routesConfig = createRoutesFromElements(
   <Route>
-    {routes.map(({ id, path, title, content }) => {
+    {routes.map(({ id, path, content }) => {
       return (
         <Route
           key={id}
           path={path}
-          element={<App title={title}>{content}</App>}
+          element={<App>{content}</App>}
         />
       );
     })}

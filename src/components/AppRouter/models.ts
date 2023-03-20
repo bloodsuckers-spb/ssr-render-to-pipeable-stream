@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import { Title } from '../../models';
+
+export type Paths = '/' | '*' | '/about-us' | '/forms';
 
 export type AppRoutes = Array<{
-  id: number;
-  path: string;
-  title: Title;
+  id: string;
+  path: Paths;
   content: ReactNode;
 }>;

@@ -2,36 +2,26 @@ import { Home, AboutUs, NotFound, Forms } from '../../pages';
 
 import { AppRoutes } from './models';
 
-export const titles = {
-  Home: 'Home',
-  AboutUs: 'AboutUs',
-  NotFound: 'NotFound',
-  Forms: 'Forms',
-} as const;
-
 export const routes: AppRoutes = [
   {
-    id: 0,
+    id: 'home',
     path: '/',
-    title: 'Home',
     content: <Home />,
   },
   {
-    id: 1,
-    path: 'about-us',
-    title: 'AboutUs',
-    content: <AboutUs />,
-  },
-  {
-    id: 2,
+    id: 'not-found',
     path: '*',
-    title: 'NotFound',
     content: <NotFound />,
   },
   {
-    id: 3,
-    path: 'forms',
-    title: 'Forms',
+    id: 'about-us',
+    path: '/about-us',
+    content: <AboutUs />,
+  },
+
+  {
+    id: 'forms',
+    path: '/forms',
     content: <Forms />,
   },
 ];

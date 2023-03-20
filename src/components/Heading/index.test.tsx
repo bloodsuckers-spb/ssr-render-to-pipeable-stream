@@ -21,7 +21,7 @@ describe('test for Heading component', () => {
     expect(screen.getByText(ABOUT_US_TITLE)).toBeInTheDocument();
   });
 
-  it('is Heading component renders clearly with Abous Us title', () => {
+  it('is Heading component renders clearly with Not Found title', () => {
     window.history.pushState({}, 'Page Title', '/44444');
     render(<Heading />);
     expect(screen.getByTestId(TEST_ID)).toBeInTheDocument();

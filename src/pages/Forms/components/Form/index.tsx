@@ -1,26 +1,30 @@
-import { Component, ReactNode } from 'react';
+import { Component, ReactNode, FormEvent } from 'react';
+import { inputsData } from './constants';
 
 import { FormInput, Select } from '..';
 
 import styles from './index.module.css';
 
-import { countries, InputsData } from './constants';
+import { State } from './models';
 
-import { State, Props } from './models';
+import { Props } from './models';
 
 export default class Form extends Component<Props, State> {
+  formRefs: Record<string, HTMLInputElement> = {};
   constructor(props: Props) {
     super(props);
     this.state = {
-      isDisabled: true,
+      isDisabled: false,
+      isInvalid: false,
     };
   }
 
-  private handleChange() {
-    return '';
-  }
+  private handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    console.log(this.formRefs);
+  };
 
-  private handleSubmit() {
+  private handleChange() {
     return '';
   }
 
@@ -53,20 +57,18 @@ export default class Form extends Component<Props, State> {
         className={styles.form}
         onSubmit={this.handleSubmit}
       >
-        {InputsData.map((data, i) => (
+        {inputsData.map((data) => (
           <FormInput
-            key={i}
-            {...data}
+            key={data.id}
+            data={data}
+            hook={(input) => (this.formRefs[data.id] = input)}
           />
         ))}
-        <Select options={countries} />
-        <button
-          className="submit"
+        <Select />
+        <input
           type="submit"
-          disabled={this.state.isDisabled}
-        >
-          Submit
-        </button>
+          value="Submit"
+        />
       </form>
     );
   }

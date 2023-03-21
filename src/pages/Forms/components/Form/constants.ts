@@ -1,11 +1,11 @@
-export interface FormInput {
+export interface InputData {
   id: string;
   title: string;
   inputType: 'text' | 'checkbox' | 'radio' | 'date';
   errorMessage: string;
 }
 
-export const InputsData: Array<FormInput> = [
+export const inputsData: Array<InputData> = [
   {
     id: 'firstName',
     title: 'First Name',

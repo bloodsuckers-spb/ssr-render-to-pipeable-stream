@@ -1,11 +1,9 @@
-type Props = {
-  options: Array<string>;
-};
+import { countries } from '../Form/constants';
 
-const Select = ({ options }: Props) => {
+const Select = () => {
   return (
     <select>
-      {options.map((value) => (
+      {countries.map((value) => (
         <option key={value}>{value}</option>
       ))}
     </select>

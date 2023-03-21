@@ -2,6 +2,7 @@ import { Component, ReactNode, FormEvent } from 'react';
 import { inputsData } from './constants';
 
 import { FormInput, Select } from '..';
+import RadioInput from './components/RadioInput';
 
 import styles from './index.module.css';
 
@@ -9,8 +10,20 @@ import { State } from './models';
 
 import { Props } from './models';
 
+const radioData = [
+  {
+    id: 'male',
+    value: 'Male',
+  },
+  {
+    id: 'female',
+    value: 'Female',
+  },
+];
+
 export default class Form extends Component<Props, State> {
-  formRefs: Record<string, HTMLInputElement> = {};
+  inputsRefs: Record<string, HTMLInputElement> = {};
+  radioRefs: Record<string, HTMLInputElement> = {};
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -21,12 +34,9 @@ export default class Form extends Component<Props, State> {
 
   private handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log(this.formRefs);
+    console.log(this.inputsRefs);
+    console.log(this.radioRefs);
   };
-
-  private handleChange() {
-    return '';
-  }
 
   private isTextInputValid = (value: string) => {
     return /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
@@ -61,7 +71,13 @@ export default class Form extends Component<Props, State> {
           <FormInput
             key={data.id}
             data={data}
-            hook={(input) => (this.formRefs[data.id] = input)}
+            hook={(input) => (this.inputsRefs[data.id] = input)}
+          />
+        ))}
+        {radioData.map((data) => (
+          <RadioInput
+            key={data.id}
+            hook={(input) => (this.radioRefs[data.id] = input)}
           />
         ))}
         <Select />

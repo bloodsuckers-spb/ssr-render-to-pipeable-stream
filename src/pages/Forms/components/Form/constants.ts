@@ -8,13 +8,13 @@ export interface InputData {
 export const inputsData: Array<InputData> = [
   {
     id: 'firstName',
-    title: 'First Name',
+    title: 'Name',
     inputType: 'text',
     errorMessage: 'errorMessage',
   },
   {
-    id: 'sureName',
-    title: 'Surname Name',
+    id: 'surName',
+    title: 'Surname',
     inputType: 'text',
     errorMessage: 'errorMessage',
   },
@@ -34,13 +34,4 @@ export const inputsData: Array<InputData> = [
 
 export const countries = ['USA', 'Italy', 'Germany'];
 
-export const radioData = [
-  {
-    id: 'male',
-    value: 'Male',
-  },
-  {
-    id: 'female',
-    value: 'Female',
-  },
-];
+export const radioValues = ['Male', 'Female'] as const;

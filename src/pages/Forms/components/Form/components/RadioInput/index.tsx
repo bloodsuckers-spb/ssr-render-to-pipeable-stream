@@ -1,18 +1,23 @@
-type Props = {
-  hook: (input: HTMLInputElement) => HTMLInputElement;
+type RadioData = {
+  value: string;
+  id: string;
 };
 
-const RadioInput = ({ hook }: Props) => {
+type Props = {
+  hook: (input: HTMLInputElement) => HTMLInputElement;
+  data: RadioData;
+};
+
+const RadioInput = ({ hook, data: { id, value } }: Props) => {
   return (
     <div>
-      <label htmlFor="1"></label>
       <input
-        id="1"
         type="radio"
-        value="cat"
-        name="sex"
+        id={id}
+        value={value}
         ref={hook}
       />
+      <label htmlFor={id}>{value}</label>
     </div>
   );
 };

@@ -6,7 +6,7 @@ import styles from './index.module.css';
 
 import { State, Props } from './models';
 
-import { inputsData, radioData } from './constants';
+import { inputsData, radioValues } from './constants';
 
 export default class Form extends Component<Props, State> {
   inputsRefs: Record<string, HTMLInputElement> = {};
@@ -40,12 +40,16 @@ export default class Form extends Component<Props, State> {
         ))}
         <fieldset>
           <legend>Sex</legend>
-          {radioData.map((data) => (
-            <RadioInput
-              key={data.id}
-              hook={(input) => (this.radioRefs[data.id] = input)}
-            />
-          ))}
+          {radioValues.map((value) => {
+            const id = value.toLowerCase();
+            return (
+              <RadioInput
+                key={id}
+                hook={(input) => (this.radioRefs[id] = input)}
+                data={{ value, id }}
+              />
+            );
+          })}
         </fieldset>
         <FormSelect />
         <input

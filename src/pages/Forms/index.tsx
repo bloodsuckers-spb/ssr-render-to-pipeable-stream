@@ -3,7 +3,7 @@ import { Component } from 'react';
 import Form from './components/Form';
 import styles from './index.module.scss';
 
-import { FormCard } from './components/Form/components/FormCard/models';
+import { FormCard } from './components/FormCard/models';
 
 type Props = Record<string, never>;
 

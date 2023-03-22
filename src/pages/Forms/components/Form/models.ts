@@ -1,4 +1,4 @@
-import { FormCard } from './components/FormCard/models';
+import { FormCard } from '../FormCard/models';
 
 export type Props = {
   addCard: (card: FormCard) => void;

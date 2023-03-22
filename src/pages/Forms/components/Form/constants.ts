@@ -33,3 +33,14 @@ export const inputsData: Array<InputData> = [
 ];
 
 export const countries = ['USA', 'Italy', 'Germany'];
+
+export const radioData = [
+  {
+    id: 'male',
+    value: 'Male',
+  },
+  {
+    id: 'female',
+    value: 'Female',
+  },
+];

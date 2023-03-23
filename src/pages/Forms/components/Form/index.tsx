@@ -1,26 +1,26 @@
 import { Component, ReactNode, FormEvent } from 'react';
 
-import { FormInput } from './components';
+import { FormInput, FormField } from './components';
 
 import styles from './index.module.css';
+
+import Validation from '../../../../services/Validation';
 
 import { State, Props } from './models';
 
 import { inputsData, radioValues, countries } from './constants';
 
-import FormField from './components/FormField';
-
 export default class Form extends Component<Props, State> {
-  inputsRefs: Record<string, HTMLInputElement | null> = {};
-  radioRefs: Record<string, HTMLInputElement | null> = {};
-  selectRef: HTMLSelectElement | null = null;
   private static readonly selectTitle = 'Countries';
   private static readonly radioTitle = 'Sex';
+  private inputsRefs: Array<HTMLInputElement> = [];
+  private radioRefs: Array<HTMLInputElement> = [];
+  private selectRef: HTMLSelectElement | null = null;
   constructor(props: Props) {
     super(props);
     this.state = {
-      isDisabled: false,
       isInvalid: false,
+      errors: inputsData.map(({ id }) => ({ id, status: false })),
     };
   }
 
@@ -38,20 +38,20 @@ export default class Form extends Component<Props, State> {
         className={styles.form}
         onSubmit={this.handleSubmit}
       >
-        {inputsData.map((data) => (
+        {inputsData.map(({ id, type, title }, ind) => (
           <FormField
-            key={data.id}
-            title={data.title}
+            key={id}
+            title={title}
           >
             <FormInput
-              data={data}
-              hook={(input) => (this.inputsRefs[data.id] = input)}
+              data={{ id, type, title }}
+              hook={(input) => (this.inputsRefs[ind] = input)}
             />
           </FormField>
         ))}
 
         <FormField title={selectTitle}>
-          <label>{selectTitle}</label>
+          <label className={styles.sr}>{selectTitle}</label>
           <select ref={(select) => (this.selectRef = select)}>
             {countries.map((value) => (
               <option key={value}>{value}</option>
@@ -60,13 +60,13 @@ export default class Form extends Component<Props, State> {
         </FormField>
 
         <FormField title={radioTitle}>
-          {radioValues.map((value) => {
+          {radioValues.map((value, ind) => {
             const id = value.toLowerCase();
             return (
               <div key={id}>
                 <FormInput
-                  data={{ title: radioTitle, type: 'radio', id, value }}
-                  hook={(input) => (this.radioRefs[id] = input)}
+                  data={{ title: radioTitle, id, value }}
+                  hook={(input) => (this.radioRefs[ind] = input)}
                 />
               </div>
             );

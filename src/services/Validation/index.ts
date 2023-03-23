@@ -20,6 +20,12 @@ const Validation = () => {
   const isChecked = (value: string) => {
     return !!value;
   };
+
+  // switch() {
+  //   case: 
+  //   default: 
+  // } 
+
 };
 
 export default Validation;

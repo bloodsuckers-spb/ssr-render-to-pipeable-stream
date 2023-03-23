@@ -8,7 +8,7 @@ export interface InputData {
 export const inputsData: Array<InputData> = [
   {
     id: 'first-name',
-    title: 'Name',
+    title: 'First Name',
     type: 'text',
     errorMessage: 'errorMessage',
   },

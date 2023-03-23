@@ -10,7 +10,7 @@ const FormField = ({ children, title }: Props) => {
     <fieldset>
       <legend>{title}</legend>
       {children}
-      {/* <p>Error Message</p> */}
+      <p>Error Message</p>
     </fieldset>
   );
 };

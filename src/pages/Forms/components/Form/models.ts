@@ -4,11 +4,11 @@ export type Props = {
   addCard: (card: FormCard) => void;
 };
 
-export type ErrorsStatus = {
+export type ErrorsState = {
   [key: string]: boolean;
 };
 
 export type State = {
-  isInvalid: boolean;
-  errorsStatus: ErrorsStatus;
+  isFormDataValid: boolean;
+  errorsStatus: ErrorsState;
 };

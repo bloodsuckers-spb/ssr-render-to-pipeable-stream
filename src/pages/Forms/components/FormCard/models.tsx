@@ -1,3 +1,3 @@
 export type FormCard = {
-  greeting: string;
+  [key: string]: string
 };

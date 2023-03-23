@@ -1,4 +1,4 @@
-const validate = (value: string, type?: string) => {
+const validate = (value: string, type: string, checked: boolean) => {
   const isTextInputValid = (value: string) =>
     /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
 
@@ -17,8 +17,8 @@ const validate = (value: string, type?: string) => {
     return !!value;
   };
 
-  const isChecked = (value: string) => {
-    return !!value;
+  const isChecked = (checked: boolean) => {
+    return checked;
   };
 
   switch (type) {
@@ -29,7 +29,7 @@ const validate = (value: string, type?: string) => {
     case 'file':
       return !isFileValid(value);
     case 'checkbox':
-      return !isChecked(value);
+      return !isChecked(checked);
     default:
       return !isSelectValid(value);
   }

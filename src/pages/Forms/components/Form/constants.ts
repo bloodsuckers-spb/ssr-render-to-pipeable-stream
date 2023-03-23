@@ -10,25 +10,25 @@ export const inputsData: Array<InputData> = [
     id: 'firstName',
     title: 'First Name',
     type: 'text',
-    errorMessage: 'errorMessage',
+    errorMessage: 'Invalid First Name',
   },
   {
     id: 'surname',
     title: 'Surname',
     type: 'text',
-    errorMessage: 'errorMessage',
+    errorMessage: 'Invalid Last Name',
   },
   {
     id: 'bornDate',
     title: 'Born date',
     type: 'date',
-    errorMessage: 'errorMessage',
+    errorMessage: 'Invalid Born date',
   },
   {
     id: 'profilePicture',
     title: 'Profile image',
     type: 'file',
-    errorMessage: 'errorMessage',
+    errorMessage: 'Please upload image',
   },
   {
     id: 'personalData',
@@ -37,7 +37,3 @@ export const inputsData: Array<InputData> = [
     errorMessage: 'errorMessage',
   },
 ];
-
-export const countries = ['USA', 'Italy', 'Germany'];
-
-export const radioValues = ['Male', 'Female'] as const;

@@ -1,50 +1,34 @@
-import { Component } from 'react';
-
 import styles from './index.module.scss';
+
+type FormInputData = {
+  id: string;
+  type: string;
+  title: string;
+  value?: string;
+};
 
 type Props = {
   hook: (input: HTMLInputElement) => HTMLInputElement;
-  data: object;
+  data: FormInputData;
 };
 
-type State = {
-  isError: boolean;
+const FormInput = ({ data: { id, type, title, value }, hook }: Props) => {
+  return (
+    <>
+      <label
+        className={styles.sr}
+        htmlFor={id}
+      >
+        {title}
+      </label>
+      <input
+        type={type}
+        id={id}
+        ref={hook}
+        value={value}
+      />
+    </>
+  );
 };
 
-export default class FormInput extends Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      isError: false,
-    };
-  }
-
-  handleChange = () => {
-    console.log('handleChange');
-  };
-
-  render() {
-    const {
-      data: { title, id, inputType, errorMessage },
-      hook,
-    } = this.props;
-    return (
-      <fieldset>
-        <legend>{title}</legend>
-        <label
-          className={styles.sr}
-          htmlFor={id}
-        >
-          Surname Name
-        </label>
-        <input
-          type={inputType}
-          id={id}
-          ref={hook}
-          onChange={this.handleChange}
-        />
-        <p>{this.state.isError && errorMessage}</p>
-      </fieldset>
-    );
-  }
-}
+export default FormInput;

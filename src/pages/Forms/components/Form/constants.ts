@@ -1,33 +1,39 @@
 export interface InputData {
   id: string;
   title: string;
-  inputType: 'text' | 'checkbox' | 'radio' | 'date';
+  type: 'text' | 'checkbox' | 'radio' | 'date' | 'file';
   errorMessage: string;
 }
 
 export const inputsData: Array<InputData> = [
   {
-    id: 'firstName',
+    id: 'first-name',
     title: 'Name',
-    inputType: 'text',
+    type: 'text',
     errorMessage: 'errorMessage',
   },
   {
-    id: 'surName',
+    id: 'surname',
     title: 'Surname',
-    inputType: 'text',
+    type: 'text',
     errorMessage: 'errorMessage',
   },
   {
     id: 'born-date',
     title: 'Born date',
-    inputType: 'date',
+    type: 'date',
+    errorMessage: 'errorMessage',
+  },
+  {
+    id: 'profile-picture',
+    title: 'Profile image',
+    type: 'file',
     errorMessage: 'errorMessage',
   },
   {
     id: 'personal-data',
     title: 'Confirm',
-    inputType: 'checkbox',
+    type: 'checkbox',
     errorMessage: 'errorMessage',
   },
 ];

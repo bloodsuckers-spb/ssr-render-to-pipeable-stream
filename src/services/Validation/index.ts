@@ -1,4 +1,4 @@
-const Validation = () => {
+const validate = (value: string, type?: string) => {
   const isTextInputValid = (value: string) =>
     /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
 
@@ -21,11 +21,18 @@ const Validation = () => {
     return !!value;
   };
 
-  // switch() {
-  //   case: 
-  //   default: 
-  // } 
-
+  switch (type) {
+    case 'text':
+      return !isTextInputValid(value);
+    case 'date':
+      return !isDateValid(value);
+    case 'file':
+      return !isFileValid(value);
+    case 'checkbox':
+      return !isChecked(value);
+    default:
+      return !isSelectValid(value);
+  }
 };
 
-export default Validation;
+export default validate;

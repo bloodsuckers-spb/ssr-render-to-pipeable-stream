@@ -7,7 +7,7 @@ export interface InputData {
 
 export const inputsData: Array<InputData> = [
   {
-    id: 'first-name',
+    id: 'firstName',
     title: 'First Name',
     type: 'text',
     errorMessage: 'errorMessage',
@@ -19,19 +19,19 @@ export const inputsData: Array<InputData> = [
     errorMessage: 'errorMessage',
   },
   {
-    id: 'born-date',
+    id: 'bornDate',
     title: 'Born date',
     type: 'date',
     errorMessage: 'errorMessage',
   },
   {
-    id: 'profile-picture',
+    id: 'profilePicture',
     title: 'Profile image',
     type: 'file',
     errorMessage: 'errorMessage',
   },
   {
-    id: 'personal-data',
+    id: 'personalData',
     title: 'Confirm',
     type: 'checkbox',
     errorMessage: 'errorMessage',

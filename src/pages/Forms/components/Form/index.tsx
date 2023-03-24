@@ -3,11 +3,13 @@ import { Component, ReactNode, FormEvent } from 'react';
 import styles from './index.module.css';
 
 import validate from '../../../../services/Validation';
+import { FormField, FormInput } from './components';
 
 import { State, Props, ErrorsState, RefsMap } from './models';
 
 export default class Form extends Component<Props, State> {
   private static radioOptions = ['Male', 'Female'] as const;
+  private static selectOptions = ['USA', 'Italy', 'Germany'] as const;
   private static defaultSelected = 'Choose here' as const;
   private formRef: HTMLFormElement | null = null;
   private inputsRefs = new Map<keyof typeof RefsMap, HTMLInputElement | null>();
@@ -30,10 +32,7 @@ export default class Form extends Component<Props, State> {
   }
 
   private isFormValid = (errorsStatus: ErrorsState) => {
-    console.log(errorsStatus);
-    const isFormDataValid = Object.values(errorsStatus).every(
-      (state) => !state
-    );
+    const isFormDataValid = Object.values(errorsStatus).every((state) => state);
     if (isFormDataValid) {
       this.getFormData();
       this.resetForm();
@@ -48,14 +47,18 @@ export default class Form extends Component<Props, State> {
     return this.inputsRefs?.get(key)?.value ?? '';
   };
 
+  private getImgUrl = () => {
+    const file = this.inputsRefs?.get('ProfileImage')?.files?.[0];
+    return file ? URL.createObjectURL(file) : '';
+  };
+
   private handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    console.log(this.selectRef?.value);
     this.isFormValid({
-      isFirstNameValid: validate(this.getInputsValue('FirstName')),
-      isLastNameValid: validate(this.getInputsValue('LastName')),
-      isBornDateValid: validate(this.getInputsValue('BornDate'), 'date'),
-      isProfilePicValid: validate(this.getInputsValue('ProfileImage'), 'file'),
+      isFirstNameValid: !validate(this.getInputsValue('FirstName')),
+      isLastNameValid: !validate(this.getInputsValue('LastName')),
+      isBornDateValid: !validate(this.getInputsValue('BornDate'), 'date'),
+      isProfilePicValid: !validate(this.getInputsValue('ProfileImage'), 'file'),
       isCountryChecked: this.selectRef?.value !== Form.defaultSelected,
       isGenderChecked: !!this.radioRefs.find(
         (radio) => radio?.checked ?? false
@@ -73,7 +76,7 @@ export default class Form extends Component<Props, State> {
       FirstName: this.getInputsValue('FirstName'),
       LastName: this.getInputsValue('LastName'),
       BornDate: this.getInputsValue('BornDate'),
-      ProfilePic: this.getInputsValue('ProfileImage'),
+      ProfilePic: this.getImgUrl(),
       Country: this.selectRef?.value ?? '',
       PersonalData: !!this.inputsRefs?.get('PersonalData')?.checked,
     });
@@ -101,86 +104,108 @@ export default class Form extends Component<Props, State> {
         onSubmit={this.handleSubmit}
         ref={(form) => (this.formRef = form)}
       >
-        <fieldset>
-          <legend>First Name</legend>
-          <label className={styles.sr}>First Name</label>
-          <input
+        <FormField
+          title="First Name"
+          isError={!isFirstNameValid}
+          errorMessage="Invalid First Name"
+        >
+          <FormInput
             type="text"
             id="first-name"
-            ref={(input) => this.inputsRefs.set('FirstName', input)}
+            title="First Name"
+            hook={(input) => this.inputsRefs.set('FirstName', input)}
           />
-          {!isFirstNameValid && <p>Invalid First Name</p>}
-        </fieldset>
-        <fieldset>
-          <legend>Last Name</legend>
-          <label className={styles.sr}>Last Name</label>
-          <input
+        </FormField>
+        <FormField
+          title="Last Name"
+          isError={!isLastNameValid}
+          errorMessage="Invalid Last Name"
+        >
+          <FormInput
             type="text"
-            ref={(input) => this.inputsRefs.set('LastName', input)}
+            id="last-name"
+            title="Last Name"
+            hook={(input) => this.inputsRefs.set('LastName', input)}
           />
-          {!isLastNameValid && <p>Invalid Last Name</p>}
-        </fieldset>
-        <fieldset>
-          <legend>Born date</legend>
-          <label className={styles.sr}>Born date</label>
-          <input
+        </FormField>
+        <FormField
+          title="Born date"
+          isError={!isBornDateValid}
+          errorMessage="Invalid Born date"
+        >
+          <FormInput
             type="date"
-            ref={(input) => this.inputsRefs.set('BornDate', input)}
+            id="born-date"
+            title="Born date"
+            hook={(input) => this.inputsRefs.set('BornDate', input)}
           />
-          {!isBornDateValid && <p>Invalid Born date</p>}
-        </fieldset>
-        <fieldset>
-          <legend></legend>
-          <label className={styles.sr}></label>
-          <input
+        </FormField>
+        <FormField
+          title="Profile Picture"
+          isError={!isProfilePicValid}
+          errorMessage="Please upload profile picture"
+        >
+          <FormInput
             type="file"
-            ref={(input) => this.inputsRefs.set('ProfileImage', input)}
+            id="profile-image"
+            title="Profile Image"
+            hook={(input) => this.inputsRefs.set('ProfileImage', input)}
           />
-          {isProfilePicValid && <p>Please upload profile picture</p>}
-        </fieldset>
-        <fieldset>
-          <legend>Countries</legend>
+        </FormField>
+        <FormField
+          title="Countries"
+          isError={!isCountryChecked}
+          errorMessage="Please make a choise"
+        >
           <label className={styles.sr}>Countries</label>
-          <select defaultValue={Form.defaultSelected} ref={(select) => (this.selectRef = select)}>
+          <select
+            defaultValue={Form.defaultSelected}
+            ref={(select) => (this.selectRef = select)}
+          >
             <option
               disabled
               hidden
             >
               {Form.defaultSelected}
             </option>
-            <option>USA</option>
-            <option>Italy</option>
-            <option>Germany</option>
+            {Form.selectOptions.map((country) => (
+              <option key={country.toLowerCase()}>{country}</option>
+            ))}
           </select>
-          {!isCountryChecked && <p>Please make a choise</p>}
-        </fieldset>
-        <fieldset>
-          <legend>Gender</legend>
+        </FormField>
+        <FormField
+          title="Gender"
+          isError={!isGenderChecked}
+          errorMessage="Please choose your gender"
+        >
           {Form.radioOptions.map((value, ind) => {
             const id = value.toLowerCase();
             return (
               <div key={id}>
-                <label htmlFor={id}>{value}</label>
-                <input
-                  id={id}
+                <FormInput
                   type="radio"
+                  id={id}
+                  title="Gender"
+                  hook={(input) => (this.radioRefs[ind] = input)}
                   value={value}
-                  ref={(input) => (this.radioRefs[ind] = input)}
+                  name="gender"
                 />
               </div>
             );
           })}
-          {!isGenderChecked && <p>Please choose your gender</p>}
-        </fieldset>
-        <fieldset>
-          <legend>Confirm Personal Data</legend>
-          <label className={styles.sr}>Confirm Personal Data</label>
-          <input
+        </FormField>
+        <FormField
+          title="Confirm Personal Data"
+          isError={!isPersonalDataConfirm}
+          errorMessage="Please, confirm your Personal Data"
+        >
+          <FormInput
             type="checkbox"
-            ref={(input) => this.inputsRefs.set('PersonalData', input)}
+            id="personal-data"
+            title="Confirm Personal Data"
+            hook={(input) => this.inputsRefs.set('PersonalData', input)}
           />
-          {!isPersonalDataConfirm && <p>Please, confirm your Personal Data</p>}
-        </fieldset>
+        </FormField>
         <button type="submit">Submit</button>
         <button
           type="reset"

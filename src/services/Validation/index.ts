@@ -7,10 +7,9 @@ const validate = (value: string, type = 'text', checked?: boolean) => {
   };
 
   const isDateValid = (value: string) => {
-    console.log(value)
     return (
       /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(value) &&
-      Date.now() - Date.parse(value) > 0
+      Date.now() > Date.parse(value)
     );
   };
 

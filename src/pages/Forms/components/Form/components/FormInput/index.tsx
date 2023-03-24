@@ -1,21 +1,15 @@
 import styles from './index.module.scss';
 
-type FormInputData = {
+type Props = {
+  hook: (input: HTMLInputElement) => void;
   id: string;
-  type?: string;
+  type: string;
   title: string;
   value?: string;
+  name?: string;
 };
 
-type Props = {
-  hook: (input: HTMLInputElement) => HTMLInputElement;
-  data: FormInputData;
-};
-
-const FormInput = ({
-  data: { id, title, value, type = 'radio' },
-  hook,
-}: Props) => {
+const FormInput = ({ hook, id, title, type, value, name }: Props) => {
   return (
     <>
       <label
@@ -29,6 +23,7 @@ const FormInput = ({
         id={id}
         ref={hook}
         value={value}
+        name={name}
       />
       {value && <span>{value}</span>}
     </>

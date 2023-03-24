@@ -1,6 +1,6 @@
 import { createRoutesFromElements, Route } from 'react-router-dom';
 
-import App from '../AppLayout';
+import App from '../../app/AppLayout';
 
 import { routes } from './routes';
 

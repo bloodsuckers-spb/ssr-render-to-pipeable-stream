@@ -23,7 +23,7 @@ export default class Forms extends Component<Props, State> {
     this.setState(({ cards }: State) => ({
       cards: [...cards, card],
     }));
-    console.log('Update');
+    console.log(this.state.cards);
   };
 
   render() {

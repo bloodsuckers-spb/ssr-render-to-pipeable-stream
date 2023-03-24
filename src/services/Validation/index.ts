@@ -1,4 +1,4 @@
-const validate = (value: string, type: string, checked: boolean) => {
+const validate = (value: string, type = 'text', checked?: boolean) => {
   const isTextInputValid = (value: string) =>
     /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
 
@@ -7,6 +7,7 @@ const validate = (value: string, type: string, checked: boolean) => {
   };
 
   const isDateValid = (value: string) => {
+    console.log(value)
     return (
       /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(value) &&
       Date.now() - Date.parse(value) > 0
@@ -29,7 +30,7 @@ const validate = (value: string, type: string, checked: boolean) => {
     case 'file':
       return !isFileValid(value);
     case 'checkbox':
-      return !isChecked(checked);
+      return !isChecked(!!checked);
     default:
       return !isSelectValid(value);
   }

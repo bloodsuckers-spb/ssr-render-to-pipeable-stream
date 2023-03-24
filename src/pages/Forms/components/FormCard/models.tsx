@@ -1,3 +1,8 @@
 export type FormCard = {
-  [key: string]: string
+  FirstName: string;
+  LastName: string;
+  BornDate: string;
+  ProfilePic: string;
+  Country: string;
+  PersonalData: boolean;
 };

@@ -1,4 +1,4 @@
-import { AppNav, Heading, Bounding } from '../../components';
+import { AppNav, Heading, Bounding } from '../../modules';
 
 import styles from './index.module.scss';
 

@@ -1,4 +1,4 @@
-import { Home, AboutUs, NotFound, Forms } from '../../pages';
+import { Home, AboutUs, NotFound, Forms } from '../../app/pages';
 
 import { AppRoutes } from './models';
 

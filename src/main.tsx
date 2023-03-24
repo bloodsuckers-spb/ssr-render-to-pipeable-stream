@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 
-import AppRouter from './components/AppRouter';
-import routesConfig from './components/AppRouter/routesConfig';
+import AppRouter from './app/AppRouter';
+import routesConfig from './app/AppRouter/routesConfig';
 
 import './index.css';
 

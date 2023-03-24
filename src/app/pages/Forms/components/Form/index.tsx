@@ -2,7 +2,7 @@ import { Component, ReactNode, FormEvent } from 'react';
 
 import styles from './index.module.css';
 
-import validate from '../../../../services/Validation';
+import validate from '../../../../../services/Validation';
 import { FormField, FormInput } from './components';
 
 import { State, Props, ErrorsState, RefsMap } from './models';

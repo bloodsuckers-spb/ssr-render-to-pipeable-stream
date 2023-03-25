@@ -1,8 +1,13 @@
+export const formCardKeys = [
+  'FirstName',
+  'LastName',
+  'BornDate',
+  'ProfilePic',
+  'Country',
+  'Gender',
+  'PersonalData',
+] as const
+
 export type FormCard = {
-  FirstName: string;
-  LastName: string;
-  BornDate: string;
-  ProfilePic: string;
-  Country: string;
-  PersonalData: boolean;
+  [key in (typeof formCardKeys)[number]]: key extends 'PersonalData' ? boolean : string;
 };

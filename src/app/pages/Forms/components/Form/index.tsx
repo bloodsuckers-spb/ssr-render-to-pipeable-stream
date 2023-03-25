@@ -1,9 +1,8 @@
 import { Component, ReactNode, FormEvent } from 'react';
 
-import styles from './index.module.css';
+import styles from './index.module.scss';
 
 import validate from '../../../../../services/Validation';
-import { FormField, FormInput } from './components';
 
 import { State, Props, ErrorsState, RefsMap } from './models';
 
@@ -15,20 +14,21 @@ export default class Form extends Component<Props, State> {
   private inputsRefs = new Map<keyof typeof RefsMap, HTMLInputElement | null>();
   private radioRefs: Array<HTMLInputElement | null> = [];
   private selectRef: HTMLSelectElement | null = null;
+  private initialState = {
+    isFormDataValid: true,
+    errorsStatus: {
+      isFirstNameValid: true,
+      isLastNameValid: true,
+      isBornDateValid: true,
+      isProfilePicValid: true,
+      isCountryChecked: true,
+      isGenderChecked: true,
+      isPersonalDataConfirm: true,
+    } as const,
+  };
   constructor(props: Props) {
     super(props);
-    this.state = {
-      isFormDataValid: true,
-      errorsStatus: {
-        isFirstNameValid: true,
-        isLastNameValid: true,
-        isBornDateValid: true,
-        isProfilePicValid: true,
-        isCountryChecked: true,
-        isGenderChecked: true,
-        isPersonalDataConfirm: true,
-      },
-    };
+    this.state = { ...this.initialState };
   }
 
   private isFormValid = (errorsStatus: ErrorsState) => {
@@ -78,11 +78,16 @@ export default class Form extends Component<Props, State> {
       BornDate: this.getInputsValue('BornDate'),
       ProfilePic: this.getImgUrl(),
       Country: this.selectRef?.value ?? '',
+      Gender: this.radioRefs.find((radio) => radio?.checked)?.value ?? '',
       PersonalData: !!this.inputsRefs?.get('PersonalData')?.checked,
     });
   };
 
   private resetForm = () => {
+    const { isFormDataValid } = this.state;
+    if (!isFormDataValid) {
+      this.setState(this.initialState);
+    }
     this.formRef?.reset();
   };
 
@@ -104,60 +109,65 @@ export default class Form extends Component<Props, State> {
         onSubmit={this.handleSubmit}
         ref={(form) => (this.formRef = form)}
       >
-        <FormField
-          title="First Name"
-          isError={!isFirstNameValid}
-          errorMessage="Invalid First Name"
-        >
-          <FormInput
+        <h1 className={styles.title}>User Card</h1>
+        <div className={styles.textGroup}>
+          <input
+            className={styles.textInput}
             type="text"
-            id="first-name"
-            title="First Name"
-            hook={(input) => this.inputsRefs.set('FirstName', input)}
+            ref={(input) => this.inputsRefs.set('FirstName', input)}
+            placeholder=" "
           />
-        </FormField>
-        <FormField
-          title="Last Name"
-          isError={!isLastNameValid}
-          errorMessage="Invalid Last Name"
-        >
-          <FormInput
+          <label className={styles.textLabel}>First Name</label>
+          {!isFirstNameValid && <p>Invalid First Name</p>}
+        </div>
+        <div className={styles.textGroup}>
+          <input
+            className={styles.textInput}
             type="text"
-            id="last-name"
-            title="Last Name"
-            hook={(input) => this.inputsRefs.set('LastName', input)}
+            ref={(input) => this.inputsRefs.set('LastName', input)}
+            placeholder=" "
           />
-        </FormField>
-        <FormField
-          title="Born date"
-          isError={!isBornDateValid}
-          errorMessage="Invalid Born date"
-        >
-          <FormInput
+          <label className={styles.textLabel}>Last Name</label>
+          {!isLastNameValid && <p>Invalid Last Name</p>}
+        </div>
+        <div className={styles.radioGroup}>
+          {Form.radioOptions.map((value, ind) => {
+            const id = value.toLowerCase();
+            return (
+              <div key={id}>
+                <input
+                  key={id}
+                  type="radio"
+                  id={id}
+                  ref={(input) => (this.radioRefs[ind] = input)}
+                  value={value}
+                  name="gender"
+                />
+                <label htmlFor={id}>{value}</label>
+              </div>
+            );
+          })}
+          {!isGenderChecked && <p>Please make a choise</p>}
+        </div>
+        <div className={styles.dateGroup}>
+          <input
             type="date"
             id="born-date"
-            title="Born date"
-            hook={(input) => this.inputsRefs.set('BornDate', input)}
+            ref={(input) => this.inputsRefs.set('BornDate', input)}
           />
-        </FormField>
-        <FormField
-          title="Profile Picture"
-          isError={!isProfilePicValid}
-          errorMessage="Please upload profile picture"
-        >
-          <FormInput
+          <label htmlFor="born-date"></label>
+          {!isBornDateValid && <p>Invalid Born date</p>}
+        </div>
+        <div className={styles.fileGroup}>
+          <input
             type="file"
             id="profile-image"
-            title="Profile Image"
-            hook={(input) => this.inputsRefs.set('ProfileImage', input)}
+            ref={(input) => this.inputsRefs.set('ProfileImage', input)}
           />
-        </FormField>
-        <FormField
-          title="Countries"
-          isError={!isCountryChecked}
-          errorMessage="Please make a choise"
-        >
-          <label className={styles.sr}>Countries</label>
+          <label htmlFor="profile-image">Upload File</label>
+          {!isProfilePicValid && <p>Please upload profile image</p>}
+        </div>
+        <div className={styles.selectGroup}>
           <select
             defaultValue={Form.defaultSelected}
             ref={(select) => (this.selectRef = select)}
@@ -172,47 +182,32 @@ export default class Form extends Component<Props, State> {
               <option key={country.toLowerCase()}>{country}</option>
             ))}
           </select>
-        </FormField>
-        <FormField
-          title="Gender"
-          isError={!isGenderChecked}
-          errorMessage="Please choose your gender"
-        >
-          {Form.radioOptions.map((value, ind) => {
-            const id = value.toLowerCase();
-            return (
-              <div key={id}>
-                <FormInput
-                  type="radio"
-                  id={id}
-                  title="Gender"
-                  hook={(input) => (this.radioRefs[ind] = input)}
-                  value={value}
-                  name="gender"
-                />
-              </div>
-            );
-          })}
-        </FormField>
-        <FormField
-          title="Confirm Personal Data"
-          isError={!isPersonalDataConfirm}
-          errorMessage="Please, confirm your Personal Data"
-        >
-          <FormInput
+          {!isCountryChecked && <p>Please make a choise</p>}
+        </div>
+        <div>
+          <input
             type="checkbox"
             id="personal-data"
-            title="Confirm Personal Data"
-            hook={(input) => this.inputsRefs.set('PersonalData', input)}
+            ref={(input) => this.inputsRefs.set('PersonalData', input)}
           />
-        </FormField>
-        <button type="submit">Submit</button>
-        <button
-          type="reset"
-          onClick={this.resetForm}
-        >
-          Reset
-        </button>
+          <label htmlFor="personal-data">Confirm Personal Data</label>
+          {!isPersonalDataConfirm && <p>Please, confirm your Personal Data</p>}
+        </div>
+        <div className={styles.btns}>
+          <button
+            className={styles.btn}
+            type="submit"
+          >
+            Submit
+          </button>
+          <button
+            className={styles.reset}
+            type="reset"
+            onClick={this.resetForm}
+          >
+            Reset
+          </button>
+        </div>
       </form>
     );
   }

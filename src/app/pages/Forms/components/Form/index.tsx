@@ -29,6 +29,7 @@ export default class Form extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { ...this.initialState };
+    console.log(this.state);
   }
 
   private isFormValid = (errorsStatus: ErrorsState) => {
@@ -110,7 +111,7 @@ export default class Form extends Component<Props, State> {
         ref={(form) => (this.formRef = form)}
       >
         <h1 className={styles.title}>User Card</h1>
-        <div className={styles.textGroup}>
+        <div className={styles.textInputBox}>
           <input
             className={styles.textInput}
             type="text"
@@ -118,9 +119,11 @@ export default class Form extends Component<Props, State> {
             placeholder=" "
           />
           <label className={styles.textLabel}>First Name</label>
-          {!isFirstNameValid && <p>Invalid First Name</p>}
+          {!isFirstNameValid && (
+            <p className={styles.textInputBoxError}>Invalid First Name</p>
+          )}
         </div>
-        <div className={styles.textGroup}>
+        <div className={styles.textInputBox}>
           <input
             className={styles.textInput}
             type="text"
@@ -128,9 +131,11 @@ export default class Form extends Component<Props, State> {
             placeholder=" "
           />
           <label className={styles.textLabel}>Last Name</label>
-          {!isLastNameValid && <p>Invalid Last Name</p>}
+          {!isLastNameValid && (
+            <p className={styles.textInputBoxError}>Invalid Last Name</p>
+          )}
         </div>
-        <div className={styles.radioGroup}>
+        <div className={styles.radioBox}>
           {Form.radioOptions.map((value, ind) => {
             const id = value.toLowerCase();
             return (
@@ -147,7 +152,9 @@ export default class Form extends Component<Props, State> {
               </div>
             );
           })}
-          {!isGenderChecked && <p>Please make a choise</p>}
+          {!isGenderChecked && (
+            <p className={styles.radioBoxError}>Please make a choise</p>
+          )}
         </div>
         <div className={styles.dateGroup}>
           <input
@@ -158,40 +165,56 @@ export default class Form extends Component<Props, State> {
           <label htmlFor="born-date"></label>
           {!isBornDateValid && <p>Invalid Born date</p>}
         </div>
-        <div className={styles.fileGroup}>
+        <div className={styles.fileInputBox}>
           <input
             type="file"
             id="profile-image"
             ref={(input) => this.inputsRefs.set('ProfileImage', input)}
           />
           <label htmlFor="profile-image">Upload File</label>
-          {!isProfilePicValid && <p>Please upload profile image</p>}
+          {!isProfilePicValid && (
+            <p className={styles.fileBoxErrorField}>Please upload image</p>
+          )}
         </div>
-        <div className={styles.selectGroup}>
-          <select
-            defaultValue={Form.defaultSelected}
-            ref={(select) => (this.selectRef = select)}
-          >
-            <option
-              disabled
-              hidden
+        <div className={styles.selectBox}>
+          <div className={styles.selectGroup}>
+            <select
+              defaultValue={Form.defaultSelected}
+              ref={(select) => (this.selectRef = select)}
             >
-              {Form.defaultSelected}
-            </option>
-            {Form.selectOptions.map((country) => (
-              <option key={country.toLowerCase()}>{country}</option>
-            ))}
-          </select>
-          {!isCountryChecked && <p>Please make a choise</p>}
+              <option
+                disabled
+                hidden
+              >
+                {Form.defaultSelected}
+              </option>
+              {Form.selectOptions.map((country) => (
+                <option key={country.toLowerCase()}>{country}</option>
+              ))}
+            </select>
+          </div>
+          {!isCountryChecked && (
+            <p className={styles.selectBoxError}>Please make a choise</p>
+          )}
         </div>
-        <div>
+        <div className={styles.checkboxesBox}>
           <input
+            className={styles.checkbox}
             type="checkbox"
             id="personal-data"
             ref={(input) => this.inputsRefs.set('PersonalData', input)}
           />
-          <label htmlFor="personal-data">Confirm Personal Data</label>
-          {!isPersonalDataConfirm && <p>Please, confirm your Personal Data</p>}
+          <label
+            className={styles.checkboxLabel}
+            htmlFor="personal-data"
+          >
+            Confirm Personal Data
+          </label>
+          {!isPersonalDataConfirm && (
+            <p className={styles.checkboxErrorField}>
+              Please, confirm your Personal Data
+            </p>
+          )}
         </div>
         <div className={styles.btns}>
           <button

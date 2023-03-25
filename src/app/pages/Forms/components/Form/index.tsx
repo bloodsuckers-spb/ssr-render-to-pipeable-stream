@@ -163,7 +163,10 @@ export default class Form extends Component<Props, State> {
             ref={(input) => this.inputsRefs.set('BornDate', input)}
           />
           <label htmlFor="born-date"></label>
-          {!isBornDateValid && <p>Invalid Born date</p>}
+
+          {!isBornDateValid && (
+            <p className={styles.dateBoxErrorField}>Invalid Born date</p>
+          )}
         </div>
         <div className={styles.fileInputBox}>
           <input

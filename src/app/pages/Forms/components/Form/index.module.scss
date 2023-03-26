@@ -4,13 +4,19 @@ $primaryTextColor: #fff;
 $errorColor: rgb(252, 0, 0);
 $mainFontSize: 16px;
 
-@mixin formFontFamily {
+%formFontFamily {
   font-family: sans-serif;
   letter-spacing: 1px;
 }
 
-@mixin Btn {
-  @include formFontFamily();
+%ErrorField {
+  position: absolute;
+  font-size: 12px;
+  color: $errorColor;
+}
+
+%Btn {
+  @extend %formFontFamily;
   font-size: mainFontSize;
   background-color: $mainColor;
   color: $primaryTextColor;
@@ -22,19 +28,13 @@ $mainFontSize: 16px;
   transition: 0.3s;
 }
 
-@mixin ErrorField {
-  position: absolute;
-  font-size: 12px;
-  color: $errorColor;
-}
-
 @mixin TopLeftPosition($top-value, $left-value) {
   top: #{$top-value}px;
   left: #{$left-value}px;
 }
 
 .form {
-  @include formFontFamily;
+  @extend %formFontFamily;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,36 +91,36 @@ $mainFontSize: 16px;
 }
 
 .textInputBoxError {
-  @include ErrorField();
+  @extend %ErrorField;
   top: -15px;
 }
 
 .radioBoxError {
-  @include ErrorField();
+  @extend %ErrorField;
   @include TopLeftPosition(-10, 10);
 }
 
 .dateBoxErrorField {
-  @include ErrorField();
+  @extend %ErrorField;
   @include TopLeftPosition(40, 90);
 }
 
 .fileBoxErrorField {
-  @include ErrorField();
+  @extend %ErrorField;
   @include TopLeftPosition(50, 20);
 }
 
 .selectBoxError {
-  @include ErrorField();
+  @extend %ErrorField;
   @include TopLeftPosition(35, 50);
 }
 
 .checkboxErrorField {
-  @include ErrorField();
+  @extend %ErrorField;
 }
 
 .btn {
-  @include Btn();
+  @extend %Btn;
 }
 
 .btn:focus,
@@ -129,7 +129,7 @@ $mainFontSize: 16px;
 }
 
 .reset {
-  @include Btn();
+  @extend %Btn;
   background-color: #13161a;
 }
 
@@ -139,7 +139,7 @@ $mainFontSize: 16px;
 }
 
 .textInput {
-  @include formFontFamily();
+  @extend %formFontFamily;
   font-size: mainFontSize;
   width: 100%;
   padding: 0 0 10px 0;
@@ -155,7 +155,7 @@ $mainFontSize: 16px;
 }
 
 .textLabel {
-  @include formFontFamily();
+  @extend %formFontFamily;
   @include TopLeftPosition(0, 5);
   font-size: mainFontSize;
   position: absolute;

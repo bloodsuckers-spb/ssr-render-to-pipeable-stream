@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import Card from '.';
 
 const mockData = {
-  id: 0,
+  id: 'jennifer',
   name: 'Jennifer',
   imgUrl: '../../assets/images/Jennifer.png',
   breed: 'Labrador',

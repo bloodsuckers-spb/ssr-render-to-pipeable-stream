@@ -1,4 +1,4 @@
-import { CardData } from '../../../../../models/interfaces';
+import { CardData } from "../../../../../models";
 
 export type Props = {
   data: CardData;

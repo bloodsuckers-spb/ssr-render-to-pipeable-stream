@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import { fireEvent } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
 import Form from '.';
@@ -10,7 +9,7 @@ const FORM_TEST_ID = 'form';
 const FIRST_NAME_INPUT_TEST_ID = 'fist-name-input';
 const LAST_NAME_INPUT_TEST_ID = 'last-name-input';
 const MALE_RADIO_INPUT_TEST_ID = 'male-radio-input';
-const FEMALE_RADIO_INPUT_TEST_ID = 'male-radio-input';
+const FEMALE_RADIO_INPUT_TEST_ID = 'female-radio-input';
 const DATE_INPUT_TEST_ID = 'date-input';
 const FILE_INPUT_TEST_ID = 'file-input';
 const CHECKBOX_TEST_ID = 'checkbox-input';
@@ -92,7 +91,9 @@ describe('test for Form component', () => {
       target: { files: [file] },
     });
     if (fileInput.files) {
+      expect(fileInput.files).toHaveLength(1);
       expect(fileInput.files[0].name).toBe('chucknorris.png');
+      expect(fileInput.files[0]).toStrictEqual(file);
     }
   });
 });

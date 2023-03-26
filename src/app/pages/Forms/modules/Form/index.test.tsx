@@ -61,11 +61,25 @@ describe('test for Form component', () => {
     );
   });
 
-  it('BLA-BLA', () => {
+  it('are Errors appear on the page', () => {
     render(<Form addCard={mockAddCard} />);
     const submit = screen.getByTestId(SUBMIT_BTN_TEST_ID);
     fireEvent.click(submit);
     ERROR_MESSAGES.forEach((txt) =>
+      expect(screen.getByText(txt)).toBeInTheDocument()
+    );
+  });
+
+  it('set incorrect value to text inputs', () => {
+    render(<Form addCard={mockAddCard} />);
+    const textInputsErrorMessages = ['Invalid First Name', 'Invalid Last Name'];
+    const firstNameInput = screen.getByTestId(FIRST_NAME_INPUT_TEST_ID);
+    const lastNameInput = screen.getByTestId(LAST_NAME_INPUT_TEST_ID);
+    const submit = screen.getByTestId(SUBMIT_BTN_TEST_ID);
+    fireEvent.change(firstNameInput, { target: { value: 'vitaly' } });
+    fireEvent.change(lastNameInput, { target: { value: 'vitaly' } });
+    fireEvent.click(submit);
+    textInputsErrorMessages.forEach((txt) =>
       expect(screen.getByText(txt)).toBeInTheDocument()
     );
   });

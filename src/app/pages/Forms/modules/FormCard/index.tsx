@@ -6,7 +6,10 @@ const FormCard = ({
   data: { FirstName, LastName, BornDate, Country, ProfilePic, Gender },
 }: Props) => {
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      data-testid="form-card"
+    >
       <p>Name: {FirstName}</p>
       <p>Surname: {LastName}</p>
       <p>Born: {BornDate}</p>

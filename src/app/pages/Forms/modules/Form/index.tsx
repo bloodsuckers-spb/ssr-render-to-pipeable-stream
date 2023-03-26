@@ -205,6 +205,7 @@ export default class Form extends Component<Props, State> {
             type="file"
             id="profile-image"
             ref={(input) => this.inputsRefs.set('ProfileImage', input)}
+            accept=".png,.jpg,.jpeg,.webp"
             data-testid="file-input"
           />
           <label htmlFor="profile-image">Upload File</label>

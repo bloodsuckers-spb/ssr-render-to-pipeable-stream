@@ -9,6 +9,11 @@ $mainFontSize: 16px;
   letter-spacing: 1px;
 }
 
+%ResetBorderOutline {
+  border: none;
+  outline: none;
+}
+
 %ErrorField {
   position: absolute;
   font-size: 12px;
@@ -17,13 +22,12 @@ $mainFontSize: 16px;
 
 %Btn {
   @extend %formFontFamily;
+  @extend %ResetBorderOutline;
   font-size: mainFontSize;
   background-color: $mainColor;
   color: $primaryTextColor;
   padding: 10px 20px;
-  border: none;
   border-radius: 5px;
-  outline: none;
   cursor: pointer;
   transition: 0.3s;
 }
@@ -119,34 +123,14 @@ $mainFontSize: 16px;
   @extend %ErrorField;
 }
 
-.btn {
-  @extend %Btn;
-}
-
-.btn:focus,
-.btn:hover {
-  opacity: 0.8;
-}
-
-.reset {
-  @extend %Btn;
-  background-color: #13161a;
-}
-
-.reset:focus,
-.reset:hover {
-  opacity: 0.9;
-}
-
 .textInput {
   @extend %formFontFamily;
+  @extend %ResetBorderOutline;
   font-size: mainFontSize;
   width: 100%;
   padding: 0 0 10px 0;
-  border: none;
   border-bottom: 1px solid #e0e0e0;
   background-color: transparent;
-  outline: none;
   transition: 0.3s;
 }
 
@@ -258,15 +242,14 @@ $mainFontSize: 16px;
 }
 
 .dateGroup input {
+  @extend %ResetBorderOutline;
   padding: 5px;
   position: absolute;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   font-size: 18px;
-  outline: none;
   border-radius: 5px;
-  border: none;
   border: 1px solid #e4e4e4;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
   background-color: 1px solid rgba(0, 0, 0, 0.2);
@@ -297,13 +280,14 @@ $mainFontSize: 16px;
 }
 
 .checkbox + .checkboxLabel:before {
+  $size: 15px;
   content: '';
   background: $primaryTextColor;
   border: 2px solid #ddd;
   display: inline-block;
   vertical-align: middle;
-  width: 15px;
-  height: 15px;
+  width: $size;
+  height: $size;
   padding: 2px;
   margin-right: 10px;
   text-align: center;
@@ -321,4 +305,20 @@ $mainFontSize: 16px;
   display: flex;
   justify-content: center;
   gap: 10px;
+}
+
+.btn {
+  @extend %Btn;
+}
+
+.btn:focus,
+.btn:hover,
+.reset:focus,
+.reset:hover {
+  opacity: 0.8;
+}
+
+.reset {
+  @extend %Btn;
+  background-color: #13161a;
 }

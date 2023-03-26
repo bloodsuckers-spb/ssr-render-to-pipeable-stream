@@ -1,7 +1,7 @@
-import { FormCard } from '../FormCard/models';
+import { FormCardData } from '../FormCard/models';
 
 export type Props = {
-  addCard: (card: FormCard) => void;
+  addCard: (card: FormCardData) => void;
 };
 
 export const RefsMap = {
@@ -26,8 +26,8 @@ export type ErrorsState = {
   [key in (typeof errorsKeys)[number]]: boolean;
 };
 
-
 export type State = {
   isFormDataValid: boolean;
+  isCardAdded: boolean;
   errorsStatus: ErrorsState;
 };

@@ -8,6 +8,10 @@ export const formCardKeys = [
   'PersonalData',
 ] as const
 
-export type FormCard = {
+export type FormCardData = {
   [key in (typeof formCardKeys)[number]]: key extends 'PersonalData' ? boolean : string;
+};
+
+export type Props = {
+  data: FormCardData;
 };

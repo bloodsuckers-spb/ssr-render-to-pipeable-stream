@@ -2,8 +2,6 @@ import { Component, ReactNode, FormEvent } from 'react';
 
 import styles from './index.module.scss';
 
-import validate from '../../../../../services/Validation';
-
 import { State, Props, ErrorsState, RefsMap } from './models';
 
 export default class Form extends Component<Props, State> {
@@ -16,6 +14,7 @@ export default class Form extends Component<Props, State> {
   private selectRef: HTMLSelectElement | null = null;
   private initialState = {
     isFormDataValid: true,
+    isCardAdded: false,
     errorsStatus: {
       isFirstNameValid: true,
       isLastNameValid: true,
@@ -29,47 +28,69 @@ export default class Form extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { ...this.initialState };
-    console.log(this.state);
   }
 
   private isFormValid = (errorsStatus: ErrorsState) => {
     const isFormDataValid = Object.values(errorsStatus).every((state) => state);
     if (isFormDataValid) {
+      this.setState({
+        ...this.initialState,
+        isCardAdded: true,
+      });
       this.getFormData();
       this.resetForm();
+    } else {
+      this.setState({
+        isFormDataValid,
+        errorsStatus,
+        isCardAdded: false,
+      });
     }
-    this.setState({
-      isFormDataValid,
-      errorsStatus,
-    });
   };
 
-  private getInputsValue = (key: keyof typeof RefsMap) => {
-    return this.inputsRefs?.get(key)?.value ?? '';
-  };
+  private getInputsValue = (key: keyof typeof RefsMap) =>
+    this.inputsRefs?.get(key)?.value ?? '';
 
   private getImgUrl = () => {
     const file = this.inputsRefs?.get('ProfileImage')?.files?.[0];
     return file ? URL.createObjectURL(file) : '';
   };
 
+  private validateText = (value: string) =>
+    /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
+
+  private validateDate = (value: string) =>
+    /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(value) && Date.now() > Date.parse(value);
+
+  private validateFile = (value: string) => {
+    const extensions = ['.jpg', '.jpeg', '.png', '.bmp'];
+    return extensions.some((extension) => value.includes(extension));
+  };
+
+  private validateRadio = () =>
+    !!this.radioRefs.find((radio) => radio?.checked ?? false);
+
+  private validateSelect = () => this.selectRef?.value !== Form.defaultSelected;
+
+  private isChecked = () => !!this.inputsRefs?.get('PersonalData')?.checked;
+
   private handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     this.isFormValid({
-      isFirstNameValid: !validate(this.getInputsValue('FirstName')),
-      isLastNameValid: !validate(this.getInputsValue('LastName')),
-      isBornDateValid: !validate(this.getInputsValue('BornDate'), 'date'),
-      isProfilePicValid: !validate(this.getInputsValue('ProfileImage'), 'file'),
-      isCountryChecked: this.selectRef?.value !== Form.defaultSelected,
-      isGenderChecked: !!this.radioRefs.find(
-        (radio) => radio?.checked ?? false
-      ),
-      isPersonalDataConfirm: validate(
-        '',
-        'checkbox',
-        !this.inputsRefs?.get('PersonalData')?.checked
-      ),
+      isFirstNameValid: this.validateText(this.getInputsValue('FirstName')),
+      isLastNameValid: this.validateText(this.getInputsValue('LastName')),
+      isBornDateValid: this.validateDate(this.getInputsValue('BornDate')),
+      isProfilePicValid: this.validateFile(this.getInputsValue('ProfileImage')),
+      isCountryChecked: this.validateSelect(),
+      isGenderChecked: this.validateRadio(),
+      isPersonalDataConfirm: this.isChecked(),
     });
+  };
+
+  private handleChange = () => {
+    const { isCardAdded } = this.state;
+    if (!isCardAdded) return;
+    this.setState({ isCardAdded: false });
   };
 
   private getFormData = () => {
@@ -80,16 +101,21 @@ export default class Form extends Component<Props, State> {
       ProfilePic: this.getImgUrl(),
       Country: this.selectRef?.value ?? '',
       Gender: this.radioRefs.find((radio) => radio?.checked)?.value ?? '',
-      PersonalData: !!this.inputsRefs?.get('PersonalData')?.checked,
+      PersonalData: this.isChecked(),
     });
   };
 
   private resetForm = () => {
-    const { isFormDataValid } = this.state;
-    if (!isFormDataValid) {
-      this.setState(this.initialState);
+    const checkbox = this.inputsRefs.get('PersonalData');
+    if (checkbox) {
+      checkbox.checked = false;
     }
     this.formRef?.reset();
+  };
+
+  private handleResetClick = () => {
+    this.resetForm();
+    this.setState(this.initialState);
   };
 
   render(): ReactNode {
@@ -103,11 +129,13 @@ export default class Form extends Component<Props, State> {
         isGenderChecked,
         isPersonalDataConfirm,
       },
+      isCardAdded,
     } = this.state;
     return (
       <form
         className={styles.form}
         onSubmit={this.handleSubmit}
+        onChange={this.handleChange}
         ref={(form) => (this.formRef = form)}
       >
         <h1 className={styles.title}>User Card</h1>
@@ -229,11 +257,14 @@ export default class Form extends Component<Props, State> {
           <button
             className={styles.reset}
             type="reset"
-            onClick={this.resetForm}
+            onClick={this.handleResetClick}
           >
             Reset
           </button>
         </div>
+        {isCardAdded && (
+          <p className={styles.cardMessage}>The card has been added</p>
+        )}
       </form>
     );
   }

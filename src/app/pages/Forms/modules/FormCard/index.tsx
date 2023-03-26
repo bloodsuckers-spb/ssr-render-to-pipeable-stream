@@ -1,0 +1,23 @@
+import styles from './index.module.scss';
+
+import { Props } from '../FormCard/models';
+
+const FormCard = ({
+  data: { FirstName, LastName, BornDate, Country, ProfilePic, Gender },
+}: Props) => {
+  return (
+    <div className={styles.card}>
+      <p>{FirstName}</p>
+      <p>{LastName}</p>
+      <p>Born: {BornDate}</p>
+      <p>Country: {Country}</p>
+      <p>Sex: {Gender}</p>
+      <img
+        className={styles.image}
+        src={ProfilePic}
+      ></img>
+    </div>
+  );
+};
+
+export default FormCard;

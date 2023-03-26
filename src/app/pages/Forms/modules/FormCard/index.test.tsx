@@ -5,7 +5,7 @@ import FormCard from '.';
 const FORM_CARD_TEST_ID = 'form-card';
 
 const mockData = {
-  FirstName: '',
+  FirstName: 'Vitaly',
   LastName: '',
   BornDate: '',
   ProfilePic: '',
@@ -17,7 +17,7 @@ const mockData = {
 describe('test for FormCard component', () => {
   it('is FormCard component renders clearly', () => {
     render(<FormCard data={mockData} />);
-    const card = screen.getByTestId(FORM_CARD_TEST_ID);
-    expect(card).toBeInTheDocument();
+    expect(screen.getByTestId(FORM_CARD_TEST_ID)).toBeInTheDocument();
+    expect(screen.getByText(/Vitaly/)).toBeInTheDocument();
   });
 });

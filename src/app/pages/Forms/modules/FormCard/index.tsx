@@ -7,8 +7,8 @@ const FormCard = ({
 }: Props) => {
   return (
     <div className={styles.card}>
-      <p>{FirstName}</p>
-      <p>{LastName}</p>
+      <p>Name: {FirstName}</p>
+      <p>Surname: {LastName}</p>
       <p>Born: {BornDate}</p>
       <p>Country: {Country}</p>
       <p>Sex: {Gender}</p>

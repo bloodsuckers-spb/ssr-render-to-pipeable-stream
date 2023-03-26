@@ -137,6 +137,7 @@ export default class Form extends Component<Props, State> {
         onSubmit={this.handleSubmit}
         onChange={this.handleChange}
         ref={(form) => (this.formRef = form)}
+        data-testid="form"
       >
         <h1 className={styles.title}>User Card</h1>
         <div className={styles.textInputBox}>
@@ -145,6 +146,7 @@ export default class Form extends Component<Props, State> {
             type="text"
             ref={(input) => this.inputsRefs.set('FirstName', input)}
             placeholder=" "
+            data-testid="fist-name-input"
           />
           <label className={styles.textLabel}>First Name</label>
           {!isFirstNameValid && (
@@ -157,6 +159,7 @@ export default class Form extends Component<Props, State> {
             type="text"
             ref={(input) => this.inputsRefs.set('LastName', input)}
             placeholder=" "
+            data-testid="last-name-input"
           />
           <label className={styles.textLabel}>Last Name</label>
           {!isLastNameValid && (
@@ -169,12 +172,12 @@ export default class Form extends Component<Props, State> {
             return (
               <div key={id}>
                 <input
-                  key={id}
                   type="radio"
                   id={id}
                   ref={(input) => (this.radioRefs[ind] = input)}
                   value={value}
                   name="gender"
+                  data-testid={`${id}-radio-input`}
                 />
                 <label htmlFor={id}>{value}</label>
               </div>
@@ -189,6 +192,7 @@ export default class Form extends Component<Props, State> {
             type="date"
             id="born-date"
             ref={(input) => this.inputsRefs.set('BornDate', input)}
+            data-testid="date-input"
           />
           <label htmlFor="born-date"></label>
 
@@ -201,6 +205,7 @@ export default class Form extends Component<Props, State> {
             type="file"
             id="profile-image"
             ref={(input) => this.inputsRefs.set('ProfileImage', input)}
+            data-testid="file-input"
           />
           <label htmlFor="profile-image">Upload File</label>
           {!isProfilePicValid && (
@@ -212,6 +217,7 @@ export default class Form extends Component<Props, State> {
             <select
               defaultValue={Form.defaultSelected}
               ref={(select) => (this.selectRef = select)}
+              data-testid="select"
             >
               <option
                 disabled
@@ -225,7 +231,7 @@ export default class Form extends Component<Props, State> {
             </select>
           </div>
           {!isCountryChecked && (
-            <p className={styles.selectBoxError}>Please make a choise</p>
+            <p className={styles.selectBoxError}>Please choose country</p>
           )}
         </div>
         <div className={styles.checkboxesBox}>
@@ -234,6 +240,7 @@ export default class Form extends Component<Props, State> {
             type="checkbox"
             id="personal-data"
             ref={(input) => this.inputsRefs.set('PersonalData', input)}
+            data-testid="checkbox-input"
           />
           <label
             className={styles.checkboxLabel}
@@ -251,6 +258,7 @@ export default class Form extends Component<Props, State> {
           <button
             className={styles.btn}
             type="submit"
+            data-testid="submit"
           >
             Submit
           </button>
@@ -258,6 +266,7 @@ export default class Form extends Component<Props, State> {
             className={styles.reset}
             type="reset"
             onClick={this.handleResetClick}
+            data-testid="reset"
           >
             Reset
           </button>

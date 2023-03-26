@@ -1,7 +1,8 @@
-import { FormCard } from './modules/FormCard/models';
+import { FormCardData } from './modules/FormCard/models';
+import { Empty } from '../../../models';
 
-export type Props = Record<string, never>;
+export type Props = Empty;
 
 export type State = {
-  cards: Array<FormCard>;
+  cards: Array<FormCardData>;
 };

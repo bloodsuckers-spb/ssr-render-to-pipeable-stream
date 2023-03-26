@@ -27,12 +27,14 @@ export default class Forms extends Component<Props, State> {
     return (
       <div className={styles.forms}>
         <Form addCard={(card: FormCardData) => this.addCard(card)} />
-        {cards.map((card, ind) => (
-          <FormCard
-            key={ind}
-            data={card}
-          />
-        ))}
+        <div className={styles.cardList}>
+          {cards.map((card, ind) => (
+            <FormCard
+              key={ind}
+              data={card}
+            />
+          ))}
+        </div>
       </div>
     );
   }

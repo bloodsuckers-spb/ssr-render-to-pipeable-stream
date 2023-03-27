@@ -1,6 +1,4 @@
-import { Empty } from "../../../../../types";
-
-export type Props = Empty;
+export type Props = Record<string, never>;
 
 export type State = {
   searchValue: string;

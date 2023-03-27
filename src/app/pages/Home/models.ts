@@ -1,5 +1,3 @@
-export type Empty = Record<string, never>;
-
 export const CardDataKeys = [
   'id',
   'name',

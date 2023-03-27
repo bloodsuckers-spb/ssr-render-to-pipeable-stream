@@ -1,4 +1,4 @@
-import { Paths } from "../../app/AppRouter/models"
+import { Paths } from '../AppRouter/models';
 
 export const titles: Record<Paths, string> = {
   '/': 'Home',

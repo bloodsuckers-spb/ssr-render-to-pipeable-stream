@@ -1,4 +1,4 @@
-import { AppNav, Heading, Bounding } from '../../modules';
+import { AppNav, Heading } from './modules';
 
 import styles from './index.module.scss';
 
@@ -10,13 +10,17 @@ const AppLayout = ({ children }: Props) => (
     data-testid="app"
   >
     <header className={styles.header}>
-      <Bounding>
-        <Heading />
-        <AppNav />
-      </Bounding>
+      <div className={styles.bounding}>
+        <div className={styles.inner}>
+          <Heading />
+          <AppNav />
+        </div>
+      </div>
     </header>
     <main>
-      <Bounding>{children}</Bounding>
+      <div className={styles.bounding}>
+        <div className={styles.inner}>{children}</div>
+      </div>
     </main>
     <footer className={styles.footer}>RSS 2023</footer>
   </div>

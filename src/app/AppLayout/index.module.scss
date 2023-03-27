@@ -7,7 +7,6 @@ $bar-color: #fff;
   display: grid;
   grid-template-rows: $bar-height 1fr;
   min-height: 100vh;
-  max-width: 1920px;
 }
 
 .header {
@@ -22,4 +21,18 @@ $bar-color: #fff;
   line-height: $bar-height;
   background-color: $bar-bg-color;
   color: $bar-color;
+}
+
+.bounding {
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 0 20px;
+  height: inherit;
+}
+
+.inner {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

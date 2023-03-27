@@ -1,4 +1,4 @@
-import { CardData } from '../../../../../types';
+import { CardData } from "../../models";
 
 export type Props = {
   data: CardData;

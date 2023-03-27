@@ -1,6 +1,4 @@
-$bar-height: 70px;
-$bar-bg-color: #000;
-$bar-color: #fff;
+@import '../../app/styles';
 
 .app {
   margin: 0 auto;
@@ -9,30 +7,10 @@ $bar-color: #fff;
   min-height: 100vh;
 }
 
-.header {
-  height: $bar-height;
-  background-color: $bar-bg-color;
-  color: $bar-color;
-}
-
-.footer {
-  height: $bar-height;
-  text-align: center;
-  line-height: $bar-height;
-  background-color: $bar-bg-color;
-  color: $bar-color;
-}
-
 .bounding {
-  margin: 0 auto;
-  max-width: 1920px;
-  padding: 0 20px;
-  height: inherit;
+  @extend %container;
 }
 
 .inner {
-  height: inherit;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  @extend %content;
 }

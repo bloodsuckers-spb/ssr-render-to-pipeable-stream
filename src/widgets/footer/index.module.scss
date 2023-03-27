@@ -1,0 +1,9 @@
+@import '../../app/styles';
+
+.footer {
+  height: $bar-height;
+  line-height: $bar-height;
+  background-color: $bar-bg-color;
+  color: $bar-color;
+  text-align: center;
+}

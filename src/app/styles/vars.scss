@@ -1,4 +1,17 @@
-:root {
-  --color-dark: #242424;
-  --color-primary: #108ee9;
+$bar-height: 70px;
+$bar-bg-color: #000;
+$bar-color: #fff;
+
+%container {
+  margin: 0 auto;
+  max-width: 1920px;
+  padding: 0 20px;
+  height: inherit;
+}
+
+%content {
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

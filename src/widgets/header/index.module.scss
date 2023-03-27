@@ -1,0 +1,15 @@
+@import '../../app/styles';
+
+.header {
+  height: $bar-height;
+  background-color: $bar-bg-color;
+  color: $bar-color;
+}
+
+.bounding {
+  @extend %container;
+}
+
+.inner {
+  @extend %content;
+}

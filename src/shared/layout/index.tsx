@@ -1,28 +1,23 @@
-import { AppNav, Heading } from '../../features';
+import { Header, Footer } from '../../widgets';
 
 import styles from './index.module.scss';
 
 import { Props } from './models';
 
+const { app, bounding, inner } = styles;
+
 const Layout = ({ children }: Props) => (
   <div
-    className={styles.app}
+    className={app}
     data-testid="app"
   >
-    <header className={styles.header}>
-      <div className={styles.bounding}>
-        <div className={styles.inner}>
-          <Heading />
-          <AppNav />
-        </div>
-      </div>
-    </header>
+    <Header />
     <main>
-      <div className={styles.bounding}>
-        <div className={styles.inner}>{children}</div>
+      <div className={bounding}>
+        <div className={inner}>{children}</div>
       </div>
     </main>
-    <footer className={styles.footer}>RSS 2023</footer>
+    <Footer />
   </div>
 );
 

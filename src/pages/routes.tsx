@@ -1,8 +1,9 @@
-import { Home, AboutUs, NotFound, Forms } from '../../../pages'
+import Home from './Home';
+import NotFound from './NotFound';
+import AboutUs from './AboutUs';
+import Forms from './Forms';
 
-import { AppRoutes } from './models';
-
-export const routes: AppRoutes = [
+export const routes = [
   {
     id: 'home',
     path: '/',

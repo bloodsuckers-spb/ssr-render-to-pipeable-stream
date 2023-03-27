@@ -1,12 +1,9 @@
 import { RouterProvider } from 'react-router-dom';
 
-import AppRouter from './providers/AppRouter';
-import routesConfig from './providers/AppRouter/routesConfig';
+import { Router } from '../pages';
 
 import './index.scss';
 
-const App = () => {
-  return <RouterProvider router={AppRouter(routesConfig)} />;
-};
+const App = () => <RouterProvider router={Router()} />;
 
 export default App;

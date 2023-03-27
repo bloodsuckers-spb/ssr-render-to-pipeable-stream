@@ -1,4 +1,4 @@
-import { AppNav, Heading } from './modules';
+import { AppNav, Heading } from '../../features';
 
 import styles from './index.module.scss';
 

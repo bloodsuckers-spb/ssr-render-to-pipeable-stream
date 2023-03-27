@@ -1,4 +1,4 @@
-import Home from './Home';
+import Home from './home';
 import NotFound from './NotFound';
 import AboutUs from './AboutUs';
 import Forms from './Forms';

@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 import { Props } from './models';
 
-const AppLayout = ({ children }: Props) => (
+const Layout = ({ children }: Props) => (
   <div
     className={styles.app}
     data-testid="app"
@@ -26,4 +26,4 @@ const AppLayout = ({ children }: Props) => (
   </div>
 );
 
-export default AppLayout;
+export default Layout;

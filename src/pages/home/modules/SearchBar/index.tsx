@@ -1,30 +1,29 @@
-import { ChangeEvent, FormEvent } from 'react';
-import { useState, useEffect } from 'react';
+import { FormEvent, useEffect, useRef } from 'react';
 
+import useLocalStorage from '../../../../shared/hooks/useLocalStorage';
 import { localStorageService } from '../../../../shared/services/StorageWrapper';
 
 import styles from './index.module.scss';
 
 const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState(
-    localStorageService.get('searchValue') || ''
+  const { storageValue, setStorageValue } = useLocalStorage<string>(
+    '',
+    'searchValue'
   );
+  const searchRef = useRef<typeof storageValue>();
 
-  // ToDo custom hook
+  useEffect(() => {
+    searchRef.current = storageValue;
+  }, [storageValue]);
+
   useEffect(() => {
     return () => {
-      localStorageService.set('searchValue', searchValue);
+      localStorageService.set('searchValue', searchRef.current ?? '');
     };
-  });
+  }, []);
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-  };
-
-  const handleChange = ({
-    currentTarget: { value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(value);
   };
 
   return (
@@ -39,8 +38,8 @@ const SearchBar = () => {
         autoComplete="off"
         placeholder="Search"
         autoFocus={true}
-        defaultValue={searchValue}
-        onChange={handleChange}
+        defaultValue={storageValue}
+        onChange={setStorageValue}
       />
       <button
         className={styles.btn}

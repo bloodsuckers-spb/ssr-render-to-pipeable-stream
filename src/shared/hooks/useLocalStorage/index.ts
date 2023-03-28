@@ -2,7 +2,7 @@ import { useState, useRef, ChangeEvent, useEffect } from 'react';
 import { localStorageService } from '../../services/StorageWrapper';
 
 const useLocalStorage = (initialValue: string, key: string) => {
-  const searchRef = useRef<typeof storageValue>();
+  const searchRef = useRef<string>();
   const getStorageValue = () => {
     const storageValue = localStorage.getItem(key);
 

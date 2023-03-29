@@ -1,7 +1,7 @@
 import Home from './home';
 import NotFound from './NotFound';
 import AboutUs from './AboutUs';
-import Forms from './Forms';
+import Forms from './forms';
 
 export const routes = [
   {

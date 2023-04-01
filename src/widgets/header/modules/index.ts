@@ -1,4 +1,4 @@
 import AppNav from './AppNav';
-import Heading from './Heading';
+import Heading from './heading';
 
 export { AppNav, Heading };

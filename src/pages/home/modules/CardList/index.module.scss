@@ -1,6 +1,6 @@
+@import '../../../../app/index.scss';
+
 .cards {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  @extend %list;
   gap: 20px;
 }

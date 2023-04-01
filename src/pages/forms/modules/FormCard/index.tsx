@@ -2,7 +2,7 @@ import styles from './index.module.scss';
 
 import { Props } from '../FormCard/models';
 
-const FormCard = ({
+export const FormCard = ({
   data: { FirstName, LastName, BornDate, Country, ProfilePic, Gender },
 }: Props) => {
   return (
@@ -23,4 +23,3 @@ const FormCard = ({
   );
 };
 
-export default FormCard;

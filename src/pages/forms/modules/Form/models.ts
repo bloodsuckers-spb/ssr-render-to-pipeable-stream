@@ -2,32 +2,21 @@ import { FormCardData } from '../FormCard/models';
 
 export type Props = {
   addCard: (card: FormCardData) => void;
+  confirm: () => void;
 };
-
-export const RefsMap = {
-  FirstName: 'FirstName',
-  LastName: 'LastName',
-  BornDate: 'BornDate',
-  ProfileImage: 'ProfileImage',
-  PersonalData: 'PersonalData',
-} as const;
-
-export const errorsKeys = [
-  'isFirstNameValid',
-  'isLastNameValid',
-  'isBornDateValid',
-  'isProfilePicValid',
-  'isCountryChecked',
-  'isGenderChecked',
-  'isPersonalDataConfirm',
+const fieldNames = [
+  'FirstName',
+  'LastName',
+  'Gender',
+  'Country',
+  'BornDate',
 ] as const;
 
-export type ErrorsState = {
-  [key in (typeof errorsKeys)[number]]: boolean;
+export type StringDataFields = {
+  [key in (typeof fieldNames)[number]]: string;
 };
 
-export type State = {
-  isFormDataValid: boolean;
-  isCardAdded: boolean;
-  errorsStatus: ErrorsState;
-};
+export type FormFields = {
+  PersonalData: boolean;
+  ProfilePic: FileList;
+} & StringDataFields;

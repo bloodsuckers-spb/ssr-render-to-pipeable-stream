@@ -1,5 +1,4 @@
-import Form from './Form';
-import FormCard from './FormCard';
-import FormCardList from './FormCardList';
-
-export { Form, FormCard, FormCardList };
+export { FormCard } from './FormCard';
+export { FormCardList } from './FormCardList';
+export { Form } from './Form';
+export { ConfirmMessage } from './ConfirmMessage';

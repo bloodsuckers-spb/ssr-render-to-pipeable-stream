@@ -1,5 +1,3 @@
-import CardList from './CardList';
-import Card from './Card';
-import SearchBar from './SearchBar';
-
-export { CardList, SearchBar, Card };
+export { CardList } from './CardList';
+export { Card } from './Card';
+export { SearchBar } from './SearchBar';

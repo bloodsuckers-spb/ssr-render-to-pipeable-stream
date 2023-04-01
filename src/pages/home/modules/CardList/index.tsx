@@ -1,9 +1,10 @@
-import Card from '../Card';
+import { Card } from '../Card';
 
 import styles from './index.module.scss';
+
 import { Props } from './models';
 
-const CardList = ({ cardsData }: Props) => {
+export const CardList = ({ cardsData }: Props) => {
   return (
     <ul
       className={styles.cards}
@@ -18,4 +19,3 @@ const CardList = ({ cardsData }: Props) => {
     </ul>
   );
 };
-export default CardList;

@@ -2,7 +2,7 @@ import { Props } from './models';
 
 import styles from './index.module.scss';
 
-const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
+export const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
   <li
     className={styles.card}
     data-testid="card"
@@ -16,5 +16,3 @@ const Card = ({ data: { name, description, imgUrl, breed } }: Props) => (
     <p>{description}</p>
   </li>
 );
-
-export default Card;

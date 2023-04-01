@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import CardList from '.';
+import { CardList } from '.';
 
 import { cardsData } from '../../constants';
 

@@ -4,7 +4,7 @@ import useLocalStorage from '../../../../shared/hooks/useLocalStorage';
 
 import styles from './index.module.scss';
 
-const SearchBar = () => {
+export const SearchBar = () => {
   const { storageValue, setStorageValue } = useLocalStorage('', 'searchValue');
 
   const handleSubmit = (event: FormEvent) => {
@@ -35,5 +35,3 @@ const SearchBar = () => {
     </form>
   );
 };
-
-export default SearchBar;

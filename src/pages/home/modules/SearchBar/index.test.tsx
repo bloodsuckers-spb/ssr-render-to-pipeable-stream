@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import SearchBar from '.';
+import { SearchBar } from '.';
 
 const ERROR_MESSAGE = 'Error, This is not Input Element';
 const PLACEHOLDER_TEXT = 'Search';

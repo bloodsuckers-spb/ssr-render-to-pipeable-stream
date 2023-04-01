@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import NotFound from '.';
+import { NotFound } from '.';
 
 const TEST_ID = 'error-page';
 const NOT_FOUND_TEXT = 'Sorry, an unexpected error has occurred.';

@@ -4,7 +4,7 @@ import styles from './index.module.scss';
 
 const { header, bounding, inner } = styles;
 
-const Header = () => (
+export const Header = () => (
   <header className={header}>
     <div className={bounding}>
       <div className={inner}>
@@ -14,5 +14,3 @@ const Header = () => (
     </div>
   </header>
 );
-
-export default Header;

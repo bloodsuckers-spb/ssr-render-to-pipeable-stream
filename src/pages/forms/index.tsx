@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 
 import { FormCardData } from './modules/FormCard/models';
 
-const Forms = () => {
+export const Forms = () => {
   const [cards, setCards] = useState<Array<FormCardData>>([]);
   const [isConfirm, setIsConfirm] = useState(true);
 
@@ -32,5 +32,3 @@ const Forms = () => {
     </div>
   );
 };
-
-export default Forms;

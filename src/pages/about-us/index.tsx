@@ -1,6 +1,6 @@
 import styles from './index.module.scss';
 
-const AboutUs = () => (
+export const AboutUs = () => (
   <div
     className={styles.content}
     data-testid="about-us-page"
@@ -10,5 +10,3 @@ const AboutUs = () => (
     consequuntur!
   </div>
 );
-
-export default AboutUs;

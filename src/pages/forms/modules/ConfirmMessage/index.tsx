@@ -7,7 +7,12 @@ export const ConfirmMessage = ({ confirm }: Props) => {
   return (
     <div className={styles.confirm}>
       <h1>The card has been added</h1>
-      <button onClick={clickHandler}>Confirm</button>
+      <button
+        className={styles.btn}
+        onClick={clickHandler}
+      >
+        Confirm
+      </button>
     </div>
   );
 };

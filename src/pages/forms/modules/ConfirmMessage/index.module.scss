@@ -1,5 +1,14 @@
 @import '../../../../app';
+@import '../Form/index.module.scss';
 
 .confirm {
   @extend %flex-col-center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  @extend %Btn;
+  width: 100px;
 }

@@ -44,37 +44,36 @@ const ERROR_MESSAGES = [
 describe('test for Form component', () => {
   const addCard = vi.fn();
   const confirm = vi.fn();
+  window.URL.createObjectURL = vi.fn();
 
-  it('is Form component renders clearly', () => {
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', {
+    type: 'image/png',
+  });
+
+  const renderForm = () => {
     render(
       <Form
         addCard={addCard}
         confirm={confirm}
       />
     );
+  };
+
+  it('Does Form component render clearly', async () => {
+    renderForm();
     const form = screen.getByTestId(FORM_TEST_ID);
     expect(form).toBeInTheDocument();
   });
 
   it('is FormItems renders clearly', () => {
-    render(
-      <Form
-        addCard={addCard}
-        confirm={confirm}
-      />
-    );
+    renderForm();
     FORM_ITEMS.forEach((testId) =>
       expect(screen.getByTestId(testId)).toBeInTheDocument()
     );
   });
 
-  it('have any errors appeared on the page?', async () => {
-    render(
-      <Form
-        addCard={addCard}
-        confirm={confirm}
-      />
-    );
+  it('have any errors appeared on the page', async () => {
+    renderForm();
     const submit = screen.getByTestId(SUBMIT_BTN_TEST_ID);
     await userEvent.click(submit);
     expect(screen.getByText(/Invalid First Name/)).toBeInTheDocument();
@@ -84,12 +83,7 @@ describe('test for Form component', () => {
   });
 
   it('set incorrect value to text inputs', async () => {
-    render(
-      <Form
-        addCard={addCard}
-        confirm={confirm}
-      />
-    );
+    renderForm();
     const textInputsErrorMessages = ['Invalid First Name', 'Invalid Last Name'];
     const firstNameInput = screen.getByTestId(FIRST_NAME_INPUT_TEST_ID);
     const lastNameInput = screen.getByTestId(LAST_NAME_INPUT_TEST_ID);
@@ -102,23 +96,38 @@ describe('test for Form component', () => {
     );
   });
 
-  test('is image File load clearly', async () => {
-    render(
-      <Form
-        addCard={addCard}
-        confirm={confirm}
-      />
-    );
+  it('is image File load clearly', async () => {
+    renderForm();
     const fileInput = screen.getByTestId(FILE_INPUT_TEST_ID);
     if (!(fileInput instanceof HTMLInputElement)) {
       throw new Error('fileInput is not instanceof HTMLInputElement');
     }
-    const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' });
     await userEvent.upload(fileInput, file);
     if (fileInput.files) {
       expect(fileInput.files).toHaveLength(1);
       expect(fileInput.files[0].name).toBe('chucknorris.png');
       expect(fileInput.files[0]).toStrictEqual(file);
     }
+  });
+
+  it('has addCard callback been called', async () => {
+    renderForm();
+    const firstNameInput = screen.getByTestId(FIRST_NAME_INPUT_TEST_ID);
+    const lastNameInput = screen.getByTestId(LAST_NAME_INPUT_TEST_ID);
+    const dateInput = screen.getByTestId(DATE_INPUT_TEST_ID);
+    const fileInput = screen.getByTestId(FILE_INPUT_TEST_ID);
+    const radioInput = screen.getByTestId(MALE_RADIO_INPUT_TEST_ID);
+    const selectInput = screen.getByTestId(SELECT_TEST_ID);
+    const checkbox = screen.getByTestId(CHECKBOX_TEST_ID);
+    const submit = screen.getByTestId(SUBMIT_BTN_TEST_ID);
+    await userEvent.type(firstNameInput, 'Myname');
+    await userEvent.type(lastNameInput, 'Mysurname');
+    await userEvent.type(dateInput, '2023-02-22');
+    await userEvent.click(radioInput);
+    await userEvent.click(checkbox);
+    await userEvent.upload(fileInput, file);
+    await userEvent.selectOptions(selectInput, 'Italy');
+    await userEvent.click(submit);
+    expect(addCard).toHaveBeenCalledTimes(1);
   });
 });

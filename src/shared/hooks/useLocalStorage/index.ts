@@ -24,9 +24,6 @@ const useLocalStorage = (initialValue: string, key: string) => {
 
   useEffect(() => {
     return () => {
-      if (typeof searchRef.current !== 'string') {
-        return;
-      }
       localStorageService.set('searchValue', searchRef.current);
     };
   }, []);

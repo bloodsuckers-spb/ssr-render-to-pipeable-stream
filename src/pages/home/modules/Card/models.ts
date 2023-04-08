@@ -1,5 +1,5 @@
-import { CardData } from "../../models";
+import { Character } from '../../models';
 
 export type Props = {
-  data: CardData;
+  character: Character;
 };

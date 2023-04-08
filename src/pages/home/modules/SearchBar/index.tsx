@@ -1,37 +1,39 @@
-import { FormEvent } from 'react';
-
-import useLocalStorage from '../../../../shared/hooks/useLocalStorage';
+import { forwardRef, ForwardedRef, FormEvent } from 'react';
 
 import styles from './index.module.scss';
 
-export const SearchBar = () => {
-  const { storageValue, setStorageValue } = useLocalStorage('', 'searchValue');
-
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
-  };
-
-  return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit}
-      data-testid="search-form"
-    >
-      <input
-        type="text"
-        className="search-bar"
-        autoComplete="off"
-        placeholder="Search"
-        autoFocus={true}
-        defaultValue={storageValue}
-        onChange={setStorageValue}
-      />
-      <button
-        className={styles.btn}
-        data-testid="search-button"
-      >
-        Search
-      </button>
-    </form>
-  );
+type Props = {
+  handleSubmit: (event: FormEvent) => void;
 };
+
+export const SearchBar = forwardRef(
+  (
+    {handleSubmit }: Props,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
+    return (
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit}
+        data-testid="search-form"
+      >
+        <input
+          id="search-input"
+          type="text"
+          className="search-bar"
+          autoComplete="off"
+          placeholder="Search"
+          autoFocus={true}
+          defaultValue={localStorage.getItem('searchValue') ?? ''}
+          ref={ref}
+        />
+        <button
+          className={styles.btn}
+          data-testid="search-button"
+        >
+          Search
+        </button>
+      </form>
+    );
+  }
+);

@@ -18,6 +18,7 @@ export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
 
   useEffect(() => {
     setIsLoading(true);
+    getCharacter();
   }, [cardId]);
 
   const getCharacter = () => {

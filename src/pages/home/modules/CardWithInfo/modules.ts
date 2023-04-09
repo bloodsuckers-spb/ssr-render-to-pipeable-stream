@@ -1,5 +1,5 @@
 export type Props = {
-  cardId: number | null;
+  cardId: number;
   onClose: () => void;
   resetCurrentCard: () => void;
 };

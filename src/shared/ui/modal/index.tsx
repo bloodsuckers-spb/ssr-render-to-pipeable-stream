@@ -8,7 +8,6 @@ import { Props } from './models';
 import styles from './index.module.scss';
 
 export const Modal = ({ children, isOpen, onClose }: Props) => {
-  console.log(children);
   const mods: Record<string, boolean> = {
     [styles.opened]: isOpen,
   };

@@ -103,18 +103,18 @@ export const Home = () => {
         pauseOnHover
         theme="dark"
       />
-      <Modal
-        isOpen={isModalOpen}
-        onClose={onModalClose}
-      >
-        {currentCard ? (
+      {currentCard ? (
+        <Modal
+          isOpen={isModalOpen}
+          onClose={onModalClose}
+        >
           <CardWithInfo
             cardId={currentCard}
             onClose={onModalClose}
             resetCurrentCard={resetCurrentCard}
           />
-        ) : null}
-      </Modal>
+        </Modal>
+      ) : null}
     </div>
   );
 };

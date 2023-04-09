@@ -13,13 +13,12 @@ import { charactersLink } from '../../constants';
 import { Character } from '../../models';
 
 export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
-  console.log(cardId);
   const [cardContent, setCardContent] = useState<Character | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
-    getCharacter();
-  }, []);
+    setIsLoading(true);
+  }, [cardId]);
 
   const getCharacter = () => {
     axios
@@ -46,7 +45,7 @@ export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
 
   return (
     <div className={styles.card}>
-      {isLoading ? (
+      {isLoading || !cardContent ? (
         <Spinner />
       ) : (
         <div className="content">
@@ -54,12 +53,12 @@ export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
             className={styles.image}
             src={cardContent?.image}
           />
-          <h4>{cardContent?.name}</h4>
-          <div>{cardContent?.created}</div>
-          <div>{cardContent?.status}</div>
-          <div>{cardContent?.type}</div>
-          <div>{cardContent?.gender}</div>
-          <div>{cardContent?.species}</div>
+          <h4>{cardContent.name}</h4>
+          <div>{cardContent.created}</div>
+          <div>{cardContent.status}</div>
+          <div>{cardContent.type}</div>
+          <div>{cardContent.gender}</div>
+          <div>{cardContent.species}</div>
         </div>
       )}
     </div>

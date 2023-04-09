@@ -1,4 +1,4 @@
-import { Header, Footer } from '../../widgets';
+import { Header, Footer } from '../../../widgets';
 
 import styles from './index.module.scss';
 

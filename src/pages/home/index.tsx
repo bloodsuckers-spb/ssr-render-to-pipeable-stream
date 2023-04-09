@@ -1,6 +1,5 @@
-import { useState, useEffect, FormEvent, useRef } from 'react';
-
 import axios from 'axios';
+import { useState, useEffect, FormEvent, useRef } from 'react';
 import { PropagateLoader as Spinner } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
 
@@ -9,6 +8,10 @@ import { SearchBar, Card } from './modules';
 import styles from './index.module.scss';
 import 'react-toastify/dist/ReactToastify.css';
 
+import { Modal } from '../../shared/ui/modal';
+
+import { CardWithInfo } from './modules/CardWithInfo';
+
 import { charactersLink } from './constants';
 
 import { Character } from './models';
@@ -16,14 +19,14 @@ import { Character } from './models';
 export const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [searchValue, setSearchValue] = useState(
-    localStorage.getItem('searchValue') ?? ''
-  );
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [currentCard, setCurrentCard] = useState<number | null>(null);
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     getCharacters(searchInputRef.current?.value);
-  }, [searchValue]);
+  }, []);
 
   const getCharacters = (params?: string) => {
     const url = params ? `${charactersLink}?name=${params}` : charactersLink;
@@ -50,11 +53,22 @@ export const Home = () => {
       });
   };
 
+  const resetCurrentCard = () => {
+    setCurrentCard(null);
+  };
+
+  const onCardClick = (id: number) => {
+    setCurrentCard(id);
+    setIsModalOpen(true);
+  };
+
+  const onModalClose = () => setIsModalOpen(false);
+
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     const searchValue = searchInputRef.current?.value ?? '';
     localStorage.setItem('searchValue', searchValue);
-    setSearchValue(searchValue);
+    getCharacters(searchValue);
   };
 
   return (
@@ -68,10 +82,12 @@ export const Home = () => {
       ) : characters.length ? (
         <ul>
           {characters.map((character) => (
-            <Card
-              key={character.id}
-              character={character}
-            />
+            <li key={character.id}>
+              <Card
+                character={character}
+                onCardClick={onCardClick}
+              />
+            </li>
           ))}
         </ul>
       ) : null}
@@ -87,6 +103,18 @@ export const Home = () => {
         pauseOnHover
         theme="dark"
       />
+      <Modal
+        isOpen={isModalOpen}
+        onClose={onModalClose}
+      >
+        {currentCard ? (
+          <CardWithInfo
+            cardId={currentCard}
+            onClose={onModalClose}
+            resetCurrentCard={resetCurrentCard}
+          />
+        ) : null}
+      </Modal>
     </div>
   );
 };

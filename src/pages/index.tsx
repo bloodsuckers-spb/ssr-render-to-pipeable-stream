@@ -4,7 +4,7 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Layout from '../shared/layout';
+import Layout from '../shared/ui/layout';
 
 import { routes } from './routes';
 

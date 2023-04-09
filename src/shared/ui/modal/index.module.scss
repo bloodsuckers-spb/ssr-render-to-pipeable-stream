@@ -19,6 +19,7 @@
 }
 
 .content {
+  position: relative;
   padding: 20px;
   border-radius: 12px;
   background: #919090;
@@ -34,4 +35,22 @@
   .content {
     transform: scale(1);
   }
+}
+
+.cross {
+  cursor: pointer;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-image: url('./cross.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.3;
+}
+
+.cross:hover {
+  opacity: 0.7;
 }

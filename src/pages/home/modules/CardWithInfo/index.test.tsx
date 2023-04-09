@@ -7,7 +7,7 @@ import { MOCK_CHARACTER } from '../../../../mocks/data';
 
 const TEST_ID = 'card-with-info';
 
-describe('b;a-b;a', () => {
+describe('test for CardWithInfo component', () => {
   const onClose = vi.fn();
   const resetCurrentCard = vi.fn();
   it('is CardWithInfo component renders clearly', () => {

@@ -80,7 +80,7 @@ export const Home = () => {
       {isLoading ? (
         <Spinner />
       ) : characters.length ? (
-        <ul>
+        <ul className={styles.list}>
           {characters.map((character) => (
             <li key={character.id}>
               <Card

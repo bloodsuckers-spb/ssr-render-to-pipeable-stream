@@ -1,25 +1,25 @@
 import { render, screen } from '@testing-library/react';
+import { vi } from 'vitest';
 
 import { Card } from '.';
-
-const mockData = {
-  id: 'jennifer',
-  name: 'Jennifer',
-  imgUrl: '../../assets/images/Jennifer.png',
-  breed: 'Labrador',
-  description:
-    "Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.",
-} as const;
+import { MOCK_CHARACTER } from '../../../../mocks/data';
 
 const TEST_ID = 'card';
-const DOG_NAME = 'Jennifer';
-const DOG_BREED = 'Labrador';
+
+const CHARACTER_NAME = 'Rick Sanchez';
+const CHARACTER_GENDER = 'Male';
 
 describe('test for Card component', () => {
+  const onCardClick = vi.fn();
   it('is Card component renders clearly', () => {
-    render(<Card data={mockData} />);
+    render(
+      <Card
+        character={MOCK_CHARACTER}
+        onCardClick={onCardClick}
+      />
+    );
     expect(screen.getByTestId(TEST_ID)).toBeInTheDocument();
-    expect(screen.getByText(DOG_NAME)).toBeInTheDocument();
-    expect(screen.getByText(DOG_BREED)).toBeInTheDocument();
+    expect(screen.getByText(CHARACTER_NAME)).toBeInTheDocument();
+    expect(screen.getByText(CHARACTER_GENDER)).toBeInTheDocument();
   });
 });

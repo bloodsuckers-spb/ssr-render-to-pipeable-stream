@@ -39,6 +39,7 @@
     "jest-localstorage-mock": "^2.4.26",
     "jsdom": "^21.1.1",
     "lint-staged": "^13.2.0",
+    "msw": "^1.2.1",
     "prettier": "2.8.4",
     "typescript": "^4.9.3",
     "typescript-plugin-css-modules": "^4.2.3",

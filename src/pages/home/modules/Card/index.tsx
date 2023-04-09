@@ -7,7 +7,7 @@ export const Card = ({
   onCardClick,
 }: Props) => {
   const onClick = () => onCardClick(id);
-
+  
   return (
     <div
       className={styles.card}

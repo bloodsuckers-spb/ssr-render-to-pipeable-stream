@@ -1,10 +1,8 @@
-import { forwardRef, ForwardedRef, FormEvent } from 'react';
+import { forwardRef, ForwardedRef } from 'react';
 
 import styles from './index.module.scss';
 
-type Props = {
-  handleSubmit: (event: FormEvent) => void;
-};
+import { Props } from './models';
 
 export const SearchBar = forwardRef(
   (

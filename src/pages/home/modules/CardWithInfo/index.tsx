@@ -1,22 +1,20 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
-
+import { useLayoutEffect, useState } from 'react';
 import { PropagateLoader as Spinner } from 'react-spinners';
 import { toast } from 'react-toastify';
 
 import styles from './index.module.scss';
 
-import { Props } from './modules';
-
 import { charactersLink } from '../../constants';
 
+import { Props } from './models';
 import { Character } from '../../models';
 
 export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
   const [cardContent, setCardContent] = useState<Character | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setIsLoading(true);
     getCharacter();
   }, [cardId]);
@@ -45,7 +43,10 @@ export const CardWithInfo = ({ cardId, onClose, resetCurrentCard }: Props) => {
   };
 
   return (
-    <div className={styles.card}>
+    <div
+      className={styles.card}
+      data-testid="card-with-info"
+    >
       {isLoading || !cardContent ? (
         <Spinner />
       ) : (

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import Heading from './heading';
+import { Heading } from './heading';
 
 const TEST_ID = 'heading';
 const DEFAULT_TITLE = 'Home';

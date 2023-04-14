@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
-import { vi } from 'vitest';
 
+import { StoreProvider } from 'app/providers';
 import { SearchBar } from './SearchBar';
 
 const ERROR_MESSAGE = 'Error, This is not Input Element';
@@ -9,10 +9,12 @@ const FORM_TEST_ID = 'search-form';
 const BTN_TEST_ID = 'search-button';
 
 describe('tests for SearchBar component', () => {
-  const handleSubmit = vi.fn();
-
   const renderSearchBar = () => {
-    render(<SearchBar handleSubmit={handleSubmit} />);
+    render(
+      <StoreProvider>
+        <SearchBar />
+      </StoreProvider>
+    );
     const searchBar = screen.getByPlaceholderText(PLACEHOLDER_TEXT);
     if (!(searchBar instanceof HTMLInputElement)) {
       throw new Error(ERROR_MESSAGE);

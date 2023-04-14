@@ -9,6 +9,7 @@ export const charactersApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: baseUrl,
   }),
+  tagTypes: ['Characters', 'Character'],
   endpoints: (builder) => ({
     getCharactersByName: builder.query<ResponseApi, string>({
       query: (name) => `character?name=${name}`,

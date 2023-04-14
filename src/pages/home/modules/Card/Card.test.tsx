@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
 import { Card } from './Card';
-import { MOCK_CHARACTER } from '../../../../app/mocks/data';
+import { MOCK_CHARACTER } from 'app/mocks/data';
 
 const TEST_ID = 'card';
 

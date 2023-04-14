@@ -1,24 +1,29 @@
 import { rest } from 'msw';
 
-import { charactersLink } from '../constants';
+import { fetch, Headers, Request, Response } from 'cross-fetch';
 
-import { MOCK_DATA, MOCK_CHARACTER } from './data';
+global.fetch = fetch;
+global.Headers = Headers;
+global.Request = Request;
+global.Response = Response;
+
+import { baseUrl } from '../constants';
+import { MOCK_DATA } from './data';
 
 export const handlers = [
-  rest.get(charactersLink, (req, res, ctx) => {
+  rest.get(`${baseUrl}/character`, (req, res, ctx) => {
+    const name = req.url.searchParams.get('name') ?? '';
     return res(
       ctx.status(200),
-      ctx.json({
-        results: MOCK_DATA,
-      })
+      ctx.json(MOCK_DATA.filter((elem) => elem.name.includes(name)))
     );
   }),
-  rest.get(`${charactersLink}/1`, (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        data: MOCK_CHARACTER,
-      })
-    );
+
+  rest.get(`${baseUrl}/character/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    const cardWithId = MOCK_DATA.find((card) => card.id === Number(id));
+    return !cardWithId
+      ? res(ctx.status(404))
+      : res(ctx.status(200), ctx.json(cardWithId));
   }),
 ];

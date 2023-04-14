@@ -1,6 +1,6 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import styles from './form.module.scss';
+import styles from './Form.module.scss';
 
 import {
   radioOptions,

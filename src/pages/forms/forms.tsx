@@ -7,11 +7,13 @@ import { Form, ConfirmMessage, FormCardList } from './modules';
 
 import styles from './forms.module.scss';
 
+import { Modal } from 'shared/ui/modal';
+
 import { FormCardData } from 'app/types/FormCardData';
 
 
 export const Forms = () => {
-  const [isConfirm, setIsConfirm] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { cards } = useAppSelector((state) => state.cardsReducer);
   const dispatch = useAppDispatch();
@@ -19,17 +21,14 @@ export const Forms = () => {
 
   return (
     <div className={styles.forms}>
-      {isConfirm ? (
-        <>
-          <Form
-            addCard={(card: FormCardData) => dispatch(setCards(card))}
-            confirm={confirm}
-          />
-          <FormCardList cards={cards} />
-        </>
-      ) : (
-        <ConfirmMessage confirm={() => setIsConfirm(!isConfirm)} />
-      )}
+      <Form
+        addCard={(card: FormCardData) => dispatch(setCards(card))}
+        confirm={() => setIsModalOpen(!isModalOpen)}
+      />
+      <FormCardList cards={cards} />
+      <Modal isOpen={isModalOpen}>
+        <ConfirmMessage confirm={() => setIsModalOpen(!isModalOpen)} />
+      </Modal>
     </div>
   );
 };

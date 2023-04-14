@@ -31,10 +31,12 @@ export const Modal = ({ children, isOpen, onClose }: Props) => {
             onClick={onContentClick}
           >
             {children}
-            <div
-              className={styles.cross}
-              onClick={onClose}
-            ></div>
+            {onClose ? (
+              <div
+                className={styles.cross}
+                onClick={onClose}
+              ></div>
+            ) : null}
           </div>
         </div>
       </div>

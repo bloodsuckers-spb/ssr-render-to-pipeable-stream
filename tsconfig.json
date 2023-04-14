@@ -20,13 +20,12 @@
         "name": "typescript-plugin-css-modules"
       }
     ],
-    "baseUrl": "./src/*",
+    "baseUrl": "src",
     "paths": {
-      "components/*": ["components/*"],
-      "pages/*": ["pages/*"],
-      "services/*": ["services/*"],
-      "models/*": ["models/*"],
-      "assets/*": ["assets/*"]
+      "*": ["./*"],
+      "app/*": ["app/*"],
+      "widgets/*": ["widgets/*"],
+      "shared/*": ["shared/*"]
     }
   },
   "include": ["src"],

@@ -1,15 +1,22 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import styles from './index.module.scss';
+import styles from './form.module.scss';
+
+import {
+  radioOptions,
+  selectOptions,
+  defaultSelected,
+  validateTextInput,
+  validateDateInput,
+  validateFileInput,
+  validateRadioInput,
+  validateSelect,
+  isChecked,
+} from './constants';
 
 import { FormFields, Props } from './models';
 
 export const Form = ({ addCard, confirm }: Props) => {
-  const radioOptions = ['Male', 'Female'] as const;
-  const extensions = ['.jpg', '.jpeg', '.png', '.bmp'] as const;
-  const selectOptions = ['USA', 'Italy', 'Germany'] as const;
-  const defaultSelected = 'Choose here' as const;
-
   const {
     register,
     handleSubmit,
@@ -22,26 +29,6 @@ export const Form = ({ addCard, confirm }: Props) => {
     confirm();
     reset();
   };
-
-  const resetForm = () => reset();
-
-  const validateTextInput = (value: string) =>
-    /^[A-Z][a-z]+|[А-Я][а-я]{2,10}$/.test(value);
-
-  const validateDateInput = (value: string) =>
-    /[0-9]{4}-[0-9]{2}-[0-9]{2}/.test(value) && Date.now() > Date.parse(value);
-
-  const validateFileInput = (filelist: FileList) => {
-    if (!filelist.length) return false;
-    const { name: value } = filelist[0];
-    return extensions.some((extension) => value.includes(extension));
-  };
-
-  const validateRadioInput = (value: string) => !!value;
-
-  const validateSelect = (value: string) => value !== defaultSelected;
-
-  const isChecked = (checked: boolean) => checked;
 
   return (
     <form
@@ -176,7 +163,7 @@ export const Form = ({ addCard, confirm }: Props) => {
         <button
           className={styles.reset}
           type="reset"
-          onClick={resetForm}
+          onClick={() => reset()}
           data-testid="reset"
         >
           Reset

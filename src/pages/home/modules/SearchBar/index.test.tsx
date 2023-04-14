@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import { SearchBar } from '.';
+import { SearchBar } from './SearchBar';
 
 const ERROR_MESSAGE = 'Error, This is not Input Element';
 const PLACEHOLDER_TEXT = 'Search';

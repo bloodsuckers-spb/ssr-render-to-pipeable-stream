@@ -1,5 +1,5 @@
+import { Character } from 'pages/home/models';
+
 export type Props = {
-  cardId: number;
-  onClose: () => void;
-  resetCurrentCard: () => void;
+  cardData: Character;
 };

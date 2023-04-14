@@ -3,7 +3,7 @@ import { CardWithInfo } from '.';
 
 import { vi } from 'vitest';
 
-import { MOCK_CHARACTER } from '../../../../mocks/data';
+import { MOCK_CHARACTER } from '../../../../app/mocks/data';
 
 const TEST_ID = 'card-with-info';
 

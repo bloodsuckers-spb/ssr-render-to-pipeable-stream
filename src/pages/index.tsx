@@ -4,15 +4,14 @@ import {
   Route,
 } from 'react-router-dom';
 
-import Layout from '../shared/ui/layout';
-
-import { routes } from './routes';
+import { Layout } from 'shared/ui';
+import { routesConfig } from 'shared/config/routesConfig/routesConfig';
 
 export const Router = () => {
   return createBrowserRouter(
     createRoutesFromElements(
       <Route>
-        {routes.map(({ id, path, content }) => {
+        {routesConfig.map(({ id, path, content }) => {
           return (
             <Route
               key={id}

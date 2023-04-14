@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { Form, ConfirmMessage, FormCardList } from './modules';
 
-import styles from './index.module.scss';
+import styles from './forms.module.scss';
 
 import { FormCardData } from './modules/FormCard/models';
 

@@ -1,9 +1,9 @@
-import { Home } from './home';
-import { NotFound } from './not-found';
-import { AboutUs } from './about-us';
-import { Forms } from './forms';
+import { Home } from 'pages/home';
+import { AboutUs } from 'pages/about-us';
+import { NotFound } from 'pages/not-found';
+import { Forms } from 'pages/forms';
 
-export const routes = [
+export const routesConfig = [
   {
     id: 'home',
     path: '/',

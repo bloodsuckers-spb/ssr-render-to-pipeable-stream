@@ -1,6 +1,6 @@
 import { rest } from 'msw';
 
-import { charactersLink } from '../pages/home/constants';
+import { charactersLink } from '../../pages/home/constants';
 
 import { MOCK_DATA, MOCK_CHARACTER } from './data';
 

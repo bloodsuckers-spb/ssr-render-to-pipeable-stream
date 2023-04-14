@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { vi } from 'vitest';
 
-import { Form } from '.';
+import { Form } from './form';
 
 const FORM_TEST_ID = 'form';
 

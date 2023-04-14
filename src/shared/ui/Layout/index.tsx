@@ -6,7 +6,7 @@ import { Props } from './models';
 
 const { app, bounding, inner } = styles;
 
-const Layout = ({ children }: Props) => (
+export const Layout = ({ children }: Props) => (
   <div
     className={app}
     data-testid="app"
@@ -20,5 +20,3 @@ const Layout = ({ children }: Props) => (
     <Footer />
   </div>
 );
-
-export default Layout;

@@ -9,11 +9,10 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      components: '/src/components',
+      app: '/src/app',
       pages: '/src/pages',
-      services: '/src/services',
-      models: '/src/models',
-      assets: '/src/assets',
+      widgets: 'src/widgets',
+      shared: '/src/shared',
     },
   },
   test: {

@@ -3,21 +3,13 @@ import { ToastContainer } from 'react-toastify';
 import { Router } from './providers/RouterProvider/Router';
 
 import './index.scss';
+import 'react-toastify/dist/ReactToastify.css';
+
+import { toastContainerOptions } from './constants';
 
 export const App = () => (
   <>
     <RouterProvider router={Router()} />
-    <ToastContainer
-      position="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="dark"
-    />
+    <ToastContainer {...toastContainerOptions} />
   </>
 );

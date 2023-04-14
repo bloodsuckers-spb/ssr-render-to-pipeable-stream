@@ -46,7 +46,7 @@ export const CardList = () => {
     <>
       {isCardListDataFetching || isCardInfoDataFetching ? (
         <Spinner />
-      ) : !isCardListError || !isCardInfoError ? (
+      ) : isCardListError || isCardInfoError ? null : (
         <ul className={styles.list}>
           {cardListData?.results.map((character) => (
             <li key={character.id}>
@@ -57,7 +57,7 @@ export const CardList = () => {
             </li>
           ))}
         </ul>
-      ) : null}
+      )}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

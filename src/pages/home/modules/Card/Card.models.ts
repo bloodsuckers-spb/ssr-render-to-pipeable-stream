@@ -1,4 +1,4 @@
-import { Character } from '../../models';
+import { Character } from "app/types/API";
 
 export type Props = {
   character: Character;

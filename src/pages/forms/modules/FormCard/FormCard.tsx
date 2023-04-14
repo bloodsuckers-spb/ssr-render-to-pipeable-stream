@@ -1,6 +1,6 @@
 import styles from './FormCard.module.scss';
 
-import { Props } from './models';
+import { Props } from './FormCard.models';
 
 export const FormCard = ({
   data: { FirstName, LastName, BornDate, Country, ProfilePic, Gender },

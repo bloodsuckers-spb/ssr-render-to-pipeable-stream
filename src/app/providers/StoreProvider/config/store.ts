@@ -1,10 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import { searchReducer } from './reducers';
+import { searchReducer, cardsReducer } from './reducers';
 import { charactersApi } from './services/charactersApi';
 import { RTKQueryErrorLogger } from '../ui/RTKQueryErrorLogger';
 
 const rootReducer = combineReducers({
   searchReducer,
+  cardsReducer,
   [charactersApi.reducerPath]: charactersApi.reducer,
 });
 

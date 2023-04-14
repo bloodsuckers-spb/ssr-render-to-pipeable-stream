@@ -1,4 +1,4 @@
-export { FormCard } from './FormCard/FormCard';
-export { FormCardList } from './FormCardList/FormCardList';
-export { Form } from './Form/form';
-export { ConfirmMessage } from './ConfirmMessage/ConfirmMessage';
+export { FormCard } from './FormCard';
+export { FormCardList } from './FormCardList';
+export { Form } from './Form';
+export { ConfirmMessage } from './ConfirmMessage';

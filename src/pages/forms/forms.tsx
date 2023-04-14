@@ -1,13 +1,14 @@
 import { useState } from 'react';
 
+import { useAppSelector, useAppDispatch } from 'shared/hooks';
+import { cardsSlice } from 'app/providers/StoreProvider/config/reducers/cardsSlice/cardsSlice';
+
 import { Form, ConfirmMessage, FormCardList } from './modules';
 
 import styles from './forms.module.scss';
 
-import { FormCardData } from './modules/FormCard/FormCard.models';
+import { FormCardData } from 'app/types/FormCardData';
 
-import { useAppSelector, useAppDispatch } from 'shared/hooks';
-import { cardsSlice } from 'app/providers/StoreProvider/config/reducers/cardsSlice/cardsSlice';
 
 export const Forms = () => {
   const [isConfirm, setIsConfirm] = useState(true);

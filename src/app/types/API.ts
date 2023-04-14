@@ -18,3 +18,7 @@ export interface Character {
   url: string;
   created: string;
 }
+
+export type ResponseApi = {
+  results: Character[];
+};

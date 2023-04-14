@@ -1,7 +1,4 @@
-import { Home } from 'pages/home';
-import { AboutUs } from 'pages/about-us';
-import { NotFound } from 'pages/not-found';
-import { Forms } from 'pages/forms';
+import { Home, AboutUs, NotFound, Forms } from 'pages';
 
 export const routesConfig = [
   {

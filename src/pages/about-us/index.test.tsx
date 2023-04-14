@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { AboutUs } from '.';
+import { AboutUs } from './AboutUs';
 
 const TEST_ID = 'about-us-page';
 

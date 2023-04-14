@@ -2,9 +2,9 @@ import { NavLink } from 'react-router-dom';
 
 import { navlinks } from './constants';
 
-import styles from './index.module.scss';
+import styles from './NavBar.module.scss';
 
-const AppNav = () => (
+export const NavBar = () => (
   <nav data-testid="nav">
     <ul className={styles.list}>
       {navlinks.map(({ url, text, id }) => (
@@ -23,4 +23,3 @@ const AppNav = () => (
   </nav>
 );
 
-export default AppNav;

@@ -1,6 +1,6 @@
 import { RouterProvider } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { Router } from 'pages';
+import { Router } from 'pages/Router';
 
 import './index.scss';
 

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
-import { baseUrl } from 'pages/home/constants';
+import { baseUrl } from 'app/constants';
 
 import { Character } from 'pages/home/models';
 
@@ -23,4 +23,5 @@ export const charactersApi = createApi({
   }),
 });
 
-export const { useGetCharactersByNameQuery, useLazyGetCharacterByIdQuery } = charactersApi;
+export const { useGetCharactersByNameQuery, useLazyGetCharacterByIdQuery } =
+  charactersApi;

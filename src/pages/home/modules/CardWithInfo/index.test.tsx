@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import { CardWithInfo } from '.';
+import { CardWithInfo } from './CardWithInfo';
 
 import { vi } from 'vitest';
 

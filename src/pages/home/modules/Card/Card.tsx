@@ -1,6 +1,6 @@
-import { Props } from './models';
+import { Props } from './Card.models';
 
-import styles from './index.module.scss';
+import styles from './Card.module.scss';
 
 export const Card = ({
   character: { name, image, gender, species, id },

@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from 'uuid';
 
-import { FormCard } from '../FormCard';
+import { FormCard } from '../FormCard/FormCard';
 
-import styles from './index.module.scss';
+import styles from './FormCardList.module.scss';
 
-import { Props } from './models';
+import { Props } from './FormCardList.models';
 
 export const FormCardList = ({ cards }: Props) => (
   <ul className={styles.list}>

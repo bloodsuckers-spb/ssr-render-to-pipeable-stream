@@ -10,7 +10,7 @@ import { useAppSelector } from 'shared/hooks';
 
 import styles from './CardList.module.scss';
 
-import { Card } from '../Card';
+import { Card } from '../Card/Card';
 import { CardWithInfo } from '../';
 
 import { Modal } from 'shared/ui/modal';

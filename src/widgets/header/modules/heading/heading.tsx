@@ -1,7 +1,7 @@
 import { titles, isPath } from './constants';
 import { useLocation } from 'react-router-dom';
 
-const Heading = () => {
+export const Heading = () => {
   const { pathname } = useLocation();
   return (
     <div data-testid="heading">
@@ -9,5 +9,3 @@ const Heading = () => {
     </div>
   );
 };
-
-export default Heading;

@@ -14,7 +14,7 @@ import {
   isChecked,
 } from './constants';
 
-import { FormFields, Props } from './models';
+import { FormFields, Props } from './Form.models';
 
 export const Form = ({ addCard, confirm }: Props) => {
   const {

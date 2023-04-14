@@ -1,7 +1,7 @@
 import { RouterProvider } from 'react-router-dom';
 import { render, screen } from '@testing-library/react';
 
-import { Router } from '.';
+import { Router } from './Router';
 
 const APP_TEST_ID = 'app';
 const HEADING_TEST_ID = 'heading';

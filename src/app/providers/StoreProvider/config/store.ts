@@ -1,8 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { searchReducer } from './reducers';
 import { charactersApi } from './services/charactersApi';
-
-import { rtkQueryErrorLogger } from 'widgets/error-logger/rtkQueryErrorLogger';
+import { RTKQueryErrorLogger } from '../ui/RTKQueryErrorLogger';
 
 const rootReducer = combineReducers({
   searchReducer,
@@ -15,7 +14,7 @@ export const setupStore = () => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(
         charactersApi.middleware,
-        rtkQueryErrorLogger
+        RTKQueryErrorLogger
       ),
   });
 };

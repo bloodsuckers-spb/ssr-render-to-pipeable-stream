@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import { FormCard } from '.';
+import { FormCard } from './FormCard';
 
 const FORM_CARD_TEST_ID = 'form-card';
 

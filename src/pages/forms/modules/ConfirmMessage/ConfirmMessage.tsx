@@ -1,6 +1,6 @@
-import styles from './index.module.scss';
+import styles from './ConfirmMessage.module.scss';
 
-import { Props } from './models';
+import { Props } from './ConfirmMessage.models';
 
 export const ConfirmMessage = ({ confirm }: Props) => {
   const clickHandler = () => confirm(true);

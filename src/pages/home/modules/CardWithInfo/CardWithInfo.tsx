@@ -1,6 +1,6 @@
-import styles from './index.module.scss';
+import styles from './CardWithInfo.module.scss';
 
-import { Props } from './models';
+import { Props } from './CardWithInfo.models';
 
 export const CardWithInfo = ({
   cardData: { name, created, status, type, gender, species, image },

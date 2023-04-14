@@ -2,7 +2,7 @@ import { isRejectedWithValue } from '@reduxjs/toolkit';
 import type { Middleware } from '@reduxjs/toolkit';
 import { toast } from 'react-toastify';
 
-export const rtkQueryErrorLogger: Middleware = () => (next) => (action) => {
+export const RTKQueryErrorLogger: Middleware = () => (next) => (action) => {
   if (isRejectedWithValue(action)) {
     toast('Sorry, There is nothing found', {
       position: 'top-right',

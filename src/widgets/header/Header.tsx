@@ -1,6 +1,6 @@
-import { Heading, AppNav } from './modules';
+import { Heading, NavBar } from './modules';
 
-import styles from './index.module.scss';
+import styles from './Header.module.scss';
 
 const { header, bounding, inner } = styles;
 
@@ -9,7 +9,7 @@ export const Header = () => (
     <div className={bounding}>
       <div className={inner}>
         <Heading />
-        <AppNav />
+        <NavBar />
       </div>
     </div>
   </header>

@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 
-import AppNav from '.';
+import AppNav from './NavBar';
 
 const TEST_ID = 'nav';
 const NAV_LINK_HOME = 'About Us';

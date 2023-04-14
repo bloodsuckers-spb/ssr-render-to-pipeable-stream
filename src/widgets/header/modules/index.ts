@@ -1,4 +1,2 @@
-import AppNav from './AppNav';
-import Heading from './heading';
-
-export { AppNav, Heading };
+export { NavBar } from './nav-bar/NavBar';
+export { Heading } from './heading/heading';

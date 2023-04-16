@@ -7,9 +7,15 @@ import styles from './FormCardList.module.scss';
 import { Props } from './FormCardList.models';
 
 export const FormCardList = ({ cards }: Props) => (
-  <ul className={styles.list}>
+  <ul
+    className={styles.list}
+    data-testid="form-card-list"
+  >
     {cards.map((cardData) => (
-      <li key={uuidv4()}>
+      <li
+        key={uuidv4()}
+        data-testid="form-card-list-items"
+      >
         <FormCard data={cardData} />
       </li>
     ))}

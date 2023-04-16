@@ -11,7 +11,6 @@ import { Modal } from 'shared/ui/modal';
 
 import { FormCardData } from 'app/types/FormCardData';
 
-
 export const Forms = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 

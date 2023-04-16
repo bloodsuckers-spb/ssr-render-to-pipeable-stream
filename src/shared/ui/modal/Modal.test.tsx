@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import { vi } from 'vitest';
 
-import { Modal } from '.';
+import { Modal } from './Modal';
 
 const MODAL_TEST_ID = 'modal';
 

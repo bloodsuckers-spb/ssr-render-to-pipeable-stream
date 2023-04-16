@@ -13,7 +13,7 @@ import styles from './CardList.module.scss';
 import { Card } from '..';
 import { CardWithInfo } from '../';
 
-import { Modal } from 'shared/ui/modal';
+import { Modal } from 'shared/ui/modal/Modal';
 
 export const CardList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

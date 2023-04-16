@@ -16,22 +16,22 @@ const BAD_ROUTE = '/123';
 describe('Tests for AppRouter', async () => {
   const setTestDefinition = (page: string) => `Render ${page} page`;
 
-  const isHaveTextContent = (route: string, TEXT: string) => {
-    window.history.pushState({}, 'Page Title', route);
+  const init = () => {
     render(
       <StoreProvider>
         <RouterProvider router={Router()} />
       </StoreProvider>
     );
+  };
+
+  const isHaveTextContent = (route: string, TEXT: string) => {
+    window.history.pushState({}, 'Page Title', route);
+    init();
     expect(screen.getByTestId(HEADING_TEST_ID)).toHaveTextContent(TEXT);
   };
 
   it('is AppRouter provider works clearly', async () => {
-    render(
-      <StoreProvider>
-        <RouterProvider router={Router()} />
-      </StoreProvider>
-    );
+    init();
     expect(screen.getByTestId(APP_TEST_ID)).toBeInTheDocument();
   });
 

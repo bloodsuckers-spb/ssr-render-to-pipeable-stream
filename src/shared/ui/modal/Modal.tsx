@@ -25,6 +25,7 @@ export const Modal = ({ children, isOpen, onClose }: Props) => {
         <div
           className={styles.overlay}
           onClick={onClose}
+          data-testid="overlay"
         >
           <div
             className={styles.content}
@@ -35,6 +36,7 @@ export const Modal = ({ children, isOpen, onClose }: Props) => {
               <div
                 className={styles.cross}
                 onClick={onClose}
+                data-testid="modal-cross"
               ></div>
             ) : null}
           </div>

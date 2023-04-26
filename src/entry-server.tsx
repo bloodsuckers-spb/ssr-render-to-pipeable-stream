@@ -3,14 +3,20 @@ import {
   renderToPipeableStream,
   RenderToPipeableStreamOptions,
 } from 'react-dom/server';
+
+import { StoreProvider } from 'app/providers';
+import { StaticRouter } from 'react-router-dom/server';
+
 import { App } from './app/App';
 
-export function render(url: string, options: RenderToPipeableStreamOptions) {
-  const stream = renderToPipeableStream(
+export const render = (url: string, options: RenderToPipeableStreamOptions) =>
+  renderToPipeableStream(
     <React.StrictMode>
-      <App />
+      <StoreProvider>
+        <StaticRouter location={url}>
+          <App />
+        </StaticRouter>
+      </StoreProvider>
     </React.StrictMode>,
     options
   );
-  return stream;
-}

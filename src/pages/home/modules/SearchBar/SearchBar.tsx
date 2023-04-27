@@ -1,4 +1,4 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useRef, useEffect } from 'react';
 
 import styles from './SearchBar.module.scss';
 

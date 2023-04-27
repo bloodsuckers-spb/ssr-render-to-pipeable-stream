@@ -3,20 +3,35 @@ import {
   renderToPipeableStream,
   RenderToPipeableStreamOptions,
 } from 'react-dom/server';
-
-import { StoreProvider } from 'app/providers';
 import { StaticRouter } from 'react-router-dom/server';
+import { Provider } from 'react-redux';
+import { setupStore } from 'app/providers/StoreProvider/config/store';
+import { charactersApi } from 'app/providers/StoreProvider/config/services/charactersApi';
 
 import { App } from './app/App';
 
-export const render = (url: string, options: RenderToPipeableStreamOptions) =>
-  renderToPipeableStream(
+export const render = async (
+  url: string,
+  options: RenderToPipeableStreamOptions
+) => {
+  const store = setupStore();
+  store.dispatch(charactersApi.endpoints.getCharactersByName.initiate(''));
+  await Promise.all(
+    store.dispatch(charactersApi.util.getRunningQueriesThunk())
+  );
+  
+  const preloadedState = store.getState();
+
+  const stream = renderToPipeableStream(
     <React.StrictMode>
-      <StoreProvider>
+      <Provider store={store}>
         <StaticRouter location={url}>
           <App />
         </StaticRouter>
-      </StoreProvider>
+      </Provider>
     </React.StrictMode>,
     options
   );
+
+  return { stream, preloadedState };
+};

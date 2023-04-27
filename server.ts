@@ -23,13 +23,18 @@ app.use('*', async (req, res, next) => {
 
     const { render } = await vite.ssrLoadModule('./src/entry-server.tsx');
 
-    const stream = render(url, {
+    const { stream, preloadedState } = await render(url, {
       onShellReady() {
         res.write(parts[0]);
         stream.pipe(res);
       },
       onAllReady() {
-        res.write(parts[1]);
+        res.write(
+          parts[1] +
+            `<script>window.__PRELOADED_STATE__ = ${JSON.stringify(
+              preloadedState
+            ).replace(/</g, '\\u003c')}</script>`
+        );
         res.end();
       },
     });

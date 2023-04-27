@@ -1,4 +1,9 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import {
+  combineReducers,
+  configureStore,
+  PreloadedState,
+} from '@reduxjs/toolkit';
+
 import { searchReducer, cardsReducer } from './reducers';
 import { charactersApi } from './services/charactersApi';
 import { RTKQueryErrorLogger } from '../ui/RTKQueryErrorLogger';
@@ -9,7 +14,7 @@ const rootReducer = combineReducers({
   [charactersApi.reducerPath]: charactersApi.reducer,
 });
 
-export const setupStore = () => {
+export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
@@ -17,6 +22,7 @@ export const setupStore = () => {
         charactersApi.middleware,
         RTKQueryErrorLogger
       ),
+    preloadedState,
   });
 };
 

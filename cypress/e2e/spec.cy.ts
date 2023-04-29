@@ -12,6 +12,3 @@ describe('My First Test', () => {
   });
 });
 
-// Set up the application state.
-// Take an action.
-// Make an assertion about the resulting application state.

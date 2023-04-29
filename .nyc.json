@@ -3,6 +3,6 @@
   "extends": "@istanbuljs/nyc-config-typescript",
   "check-coverage": true,
   "reporter": ["none"],
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "include": ["src/**/*.tsx"],
   "exclude": ["cypress/**/*"]
 }

@@ -5,11 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon",
-    "build": "npm run lint && tsc && vite build",
-    "preview": "vite preview",
-    "test": "vitest",
-    "coverage": "vitest run --coverage",
-    "lint": "npx eslint ./src"
+    "build": "tsc && vite build",
+    "lint": "npx eslint ./src",
+    "test:unit": "vitest",
+    "test:e2e": "npx nyc cypress run --browser chrome && npx nyc report --reporter=text-summary",
+    "cypress:open": "cypress open --e2e --browser chrome"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
@@ -26,9 +26,12 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
+    "@cypress/code-coverage": "^3.10.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
+    "@types/cypress__code-coverage": "^3.10.0",
     "@types/node": "^18.16.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -40,6 +43,7 @@
     "@vitest/coverage-c8": "^0.29.2",
     "cross-env": "^7.0.3",
     "cross-fetch": "^3.1.5",
+    "cypress": "^12.11.0",
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
     "husky": "^8.0.3",
@@ -48,11 +52,13 @@
     "lint-staged": "^13.2.0",
     "msw": "^1.2.1",
     "nodemon": "^2.0.22",
+    "nyc": "^15.1.0",
     "prettier": "2.8.4",
     "ts-node": "github:types/express",
     "typescript": "^4.9.3",
     "typescript-plugin-css-modules": "^4.2.3",
     "vite": "^4.1.0",
+    "vite-plugin-istanbul": "^4.0.1",
     "vitest": "^0.29.2"
   }
 }

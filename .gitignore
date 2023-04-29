@@ -26,3 +26,5 @@ coverage
 
 # vite.config.ts.timestamp
 *.mjs
+
+.nyc_output

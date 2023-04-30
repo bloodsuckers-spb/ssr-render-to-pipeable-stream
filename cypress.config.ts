@@ -8,6 +8,7 @@ export default defineConfig({
       coverage(on, config);
       return config;
     },
+    
   },
   video: false,
 });

@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon",
+    "start": "nodemon",
     "build": "tsc && vite build",
     "lint": "npx eslint ./src",
     "test:unit": "vitest",
-    "test:e2e": "npx nyc cypress run --browser chrome && npx nyc report --reporter=text-summary",
+    "test:e2e": "cypress run --browser chrome && npx nyc report",
     "cypress:open": "cypress open --e2e --browser chrome"
   },
   "dependencies": {

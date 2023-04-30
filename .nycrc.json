@@ -2,7 +2,7 @@
   "all": true,
   "extends": "@istanbuljs/nyc-config-typescript",
   "check-coverage": true,
-  "reporter": ["none"],
+  "reporter": "text",
   "include": ["src/**/*.tsx"],
-  "exclude": ["cypress/**/*"]
+  "exclude": ["cypress/**/*", "src/**/*.ts", "src/**/*.test.tsx"]
 }

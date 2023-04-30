@@ -1,4 +1,4 @@
-export { Home } from './home';
-export { AboutUs } from './about-us';
-export { Forms } from './forms';
-export { NotFound } from './not-found';
+export * from './home';
+export * from './about-us';
+export * from './forms';
+export * from './not-found';

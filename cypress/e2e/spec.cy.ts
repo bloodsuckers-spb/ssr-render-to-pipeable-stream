@@ -6,6 +6,7 @@ const enum Routes {
   FORMS = '/forms',
 }
 
+
 const SEARCH_BAR_SELECTOR = 'input';
 const CARD_SELECTOR = '[data-testid="card"]';
 const BTN_SELECTOR = '[data-testid="search-button"]';
@@ -49,13 +50,16 @@ describe('e2e tests for application', () => {
 
   it('Visit Forms page', () => {
     isHeadingContans(Routes.FORMS, 'Forms');
-    const firstNameInput = cy.get('[data-testid="fist-name-input"]');
-    const lastNameInput = cy.get('[data-testid="last-name-input"]');
-    firstNameInput.type('Vitaly');
-    firstNameInput.should('have.value', 'Vitaly');
-
-    lastNameInput.type('Bakov');
-    lastNameInput.should('have.value', 'Bakov');
+    cy.get('[data-testid="fist-name-input"]').type('Vitaly');
+    cy.get('[data-testid="last-name-input"]').type('Test');
+    cy.get('label[for="male"]').click();
+    cy.get('label[for="personal-data"]').click();
+    cy.get('[data-testid="date-input"]').type('2010-04-01');
+    cy.get('[data-testid="file-input"]').selectFile('src/shared/assets/test.png');
+    cy.get('[data-testid="select"]').select('USA');
+    cy.get('[data-testid="submit"]').click();
+    
+    cy.get('[data-testid="form-card"]').contains('Vitaly');
   });
 
   it('is navigation works clearly', () => {

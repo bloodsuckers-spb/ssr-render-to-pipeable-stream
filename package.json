@@ -52,7 +52,7 @@
     "nodemon": "^2.0.22",
     "nyc": "^15.1.0",
     "prettier": "2.8.4",
-    "ts-node": "github:types/express",
+    "ts-node": "^10.9.1",
     "typescript": "^4.9.3",
     "typescript-plugin-css-modules": "^4.2.3",
     "vite": "^4.1.0",

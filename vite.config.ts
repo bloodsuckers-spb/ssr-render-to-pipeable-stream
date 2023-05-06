@@ -2,19 +2,20 @@
 /// <reference types="vite/client" />
 
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import tsconfigPaths from 'vite-tsconfig-paths';
 
-// https://vitejs.dev/config/
+import react from '@vitejs/plugin-react';
+import istanbul from 'vite-plugin-istanbul';
+
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      app: '/src/app',
-      pages: '/src/pages',
-      widgets: 'src/widgets',
-      shared: '/src/shared',
-    },
-  },
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    istanbul({
+      cypress: true,
+      requireEnv: false,
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -24,7 +25,15 @@ export default defineConfig({
       provider: 'c8',
       all: true,
       include: ['src/**/*.tsx'],
-      exclude: ['**/*.test.tsx', '**/routes.tsx', '**/main.tsx', '**/App.tsx'],
+      exclude: [
+        '**/*.test.tsx',
+        '**/routes.tsx',
+        '**/App.tsx',
+        '**/entry*.tsx',
+      ],
     },
+  },
+  build: {
+    sourcemap: 'hidden',
   },
 });

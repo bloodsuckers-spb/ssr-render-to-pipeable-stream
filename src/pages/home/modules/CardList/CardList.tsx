@@ -17,9 +17,11 @@ import { Modal } from 'shared/ui/modal/Modal';
 
 export const CardList = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const { searchValue } = useAppSelector((state) => state.searchReducer);
 
-  const getCharactersQueryState = useGetCharactersByNameQuery(searchValue);
+  const { searchValue } = useAppSelector((state) => state.searchReducer);
+  const [searchQuery, setSearchQuery] = useState(searchValue);
+
+  const getCharactersQueryState = useGetCharactersByNameQuery(searchQuery);
   const [trigger, results] = useLazyGetCharacterByIdQuery();
 
   const {
@@ -34,6 +36,10 @@ export const CardList = () => {
     isFetching: isCardInfoDataFetching,
     isError: isCardInfoError,
   } = results;
+
+  useEffect(() => {
+    setSearchQuery(searchValue);
+  }, [searchValue]);
 
   useEffect(() => {
     if (isCardWithInfoUninitialized || isCardInfoDataFetching) {

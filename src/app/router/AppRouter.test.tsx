@@ -1,28 +1,30 @@
-import { RouterProvider } from 'react-router-dom';
-import { Router } from './Router';
-import { StoreProvider } from '../StoreProvider';
-
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
+import { StoreProvider } from 'app/providers';
+
+import { App } from 'app/App';
 
 const APP_TEST_ID = 'app';
 const HEADING_TEST_ID = 'heading';
 
 const HOME_HEADING_TEXT = 'Home';
 const ABOUT_US_HEADING_TEXT = 'About Us';
-const NOT_FOUND_HEADING_TEXT = 'Not Found';
 
+const NOT_FOUND_HEADING_TEXT = 'Not Found';
 const BAD_ROUTE = '/123';
 
 describe('Tests for AppRouter', async () => {
-  const setTestDefinition = (page: string) => `Render ${page} page`;
-
   const init = () => {
     render(
       <StoreProvider>
-        <RouterProvider router={Router()} />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </StoreProvider>
     );
   };
+
+  const setTestDefinition = (page: string) => `Render ${page} page`;
 
   const isHaveTextContent = (route: string, TEXT: string) => {
     window.history.pushState({}, 'Page Title', route);
@@ -30,7 +32,7 @@ describe('Tests for AppRouter', async () => {
     expect(screen.getByTestId(HEADING_TEST_ID)).toHaveTextContent(TEXT);
   };
 
-  it('is AppRouter provider works clearly', async () => {
+  it('is AppRouter provider works clearly', () => {
     init();
     expect(screen.getByTestId(APP_TEST_ID)).toBeInTheDocument();
   });

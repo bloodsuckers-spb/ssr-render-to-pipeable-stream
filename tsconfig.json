@@ -24,10 +24,16 @@
     "paths": {
       "*": ["./*"],
       "app/*": ["app/*"],
-      "widgets/*": ["widgets/*"],
-      "shared/*": ["shared/*"]
+      "pages/*": ["pages/*"],
+      "shared/*": ["shared/*"],
+      "widgets/*": ["widgets/*"]
     }
   },
   "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node",
+    "transpileOnly": true
+  }
 }

@@ -23,3 +23,8 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+
+# vite.config.ts.timestamp
+*.mjs
+
+.nyc_output

@@ -1,4 +1,4 @@
-# GraphiQL
+# RenderToPipeble stream SPA
 
 SPA приложение с реализацией SSR на реакте c помощью renderToPipeble stream + Express, с передачей Preloaded State (RTK Query) на фронтенд. Приложение покрыто unit и e2e тестами
 
